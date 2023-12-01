@@ -1,35 +1,42 @@
 package com.combattale;
 
-import com.combattale.utils.Vector2;
-import com.combattale.utils.Resources;
-import nl.saxion.app.SaxionApp;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.combattale.utils.Element;
 
-public class PlayerHeart {
+public class PlayerHeart extends Element {
     static final int SIZE = 30;
 
     public Vector2 position;
+    private Texture texture;
 
-    final private String spritePath;
-
-    public PlayerHeart() {
-        spritePath = Resources.getPath(this, "Undertale.png");
+    @Override
+    public void create() {
+        position = new Vector2(10, 10);
+        texture = new Texture(getClass().getClassLoader().getResource("Undertale.png").getPath());
     }
 
-    void moveX(int delta) {
+    @Override
+    public void render(SpriteBatch batch) {
+        batch.draw(texture, position.x, position.y);
+    }
+
+    @Override
+    public void keyboardEvent(Input input, float deltaTime) {
+        if(input.isKeyPressed(Keys.RIGHT)) moveX(300 * deltaTime);
+        if(input.isKeyPressed(Keys.LEFT)) moveX(-300 * deltaTime);
+        if(input.isKeyPressed(Keys.UP)) moveY(300 * deltaTime);
+        if(input.isKeyPressed(Keys.DOWN)) moveY(-300 * deltaTime);
+    }
+
+    void moveX(float delta) {
         position.x += delta;
     }
 
-    void moveY(int delta) {
+    void moveY(float delta) {
         position.y += delta;
-    }
-
-    public void draw() {
-        SaxionApp.drawImage(
-                spritePath,
-                position.x,
-                position.y,
-                SIZE,
-                SIZE
-        );
     }
 }

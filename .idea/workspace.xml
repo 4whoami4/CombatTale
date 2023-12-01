@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="843b57c0-753a-43fd-8bd6-4145130a3852" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/libs/saxionapp.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/saxionapp.jar" beforeDir="false" />
     </list>
     <list id="11b428fd-1e16-4f90-b457-fc0ea7afa072" name="Changes by kalucky" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/PlayerHeart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/PlayerHeart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Resources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Vector2.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +54,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/combattale/PlayerHeart.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -108,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701460696345</updated>
       <workItem from="1701460697458" duration="779000" />
-      <workItem from="1701461793899" duration="1910000" />
+      <workItem from="1701461793899" duration="6017000" />
     </task>
     <servers />
   </component>
