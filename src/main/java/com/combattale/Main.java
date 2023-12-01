@@ -1,13 +1,18 @@
 package com.combattale;
 
-import nl.saxion.app.SaxionApp;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-public class Main {
+public class Main  {
     static final int WINDOW_WIDTH = 1024;
     static final int WINDOW_HEIGHT = 640;
-    static final int REFRESH_RATE = 16;
+    static final String WINDOW_NAME = "Combat Tale";
 
     public static void main(String[] args) {
-        SaxionApp.startGameLoop(new Game(), WINDOW_WIDTH, WINDOW_HEIGHT, REFRESH_RATE);
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        config.width = WINDOW_WIDTH;
+        config.height = WINDOW_HEIGHT;
+        config.title = WINDOW_NAME;
+        new LwjglApplication(new Game(), config);
     }
 }

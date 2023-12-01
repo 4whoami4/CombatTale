@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation files('libs/saxionapp.jar')
+    implementation 'com.badlogicgames.gdx:gdx:1.12.1'
+    implementation 'com.badlogicgames.gdx:gdx-backend-lwjgl:1.12.1'
+    implementation 'com.badlogicgames.gdx:gdx-platform:1.12.1:natives-desktop'
 }
 
