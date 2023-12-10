@@ -7,8 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.utils.Element;
 
+import java.util.Objects;
+
 public class PlayerHeart extends Element {
-    static final int SIZE = 30;
 
     public Vector2 position;
     private Texture texture;
@@ -17,22 +18,22 @@ public class PlayerHeart extends Element {
 
     @Override
     public void create() {
-        position = new Vector2(360, 90);
-        texture = new Texture(getClass().getClassLoader().getResource("Undertale.png").getPath());
-        scale = 0.2f; // Adjust the scale factor as needed
+        position = new Vector2(365, 100);
+        texture = new Texture(Objects.requireNonNull(getClass().getClassLoader().getResource("Undertale.png")).getPath());
+        scale = 0.2f;
     }
 
     @Override
     public void render(SpriteBatch batch) {
-        batch.draw(texture, position.x, position.y, texture.getWidth() * scale, texture.getHeight() * scale);
+        batch.draw(texture, position.x, position.y,texture.getWidth()*scale,texture.getHeight()*scale);
     }
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
-        if (input.isKeyPressed(Keys.RIGHT)) moveX(300 * deltaTime);
-        if (input.isKeyPressed(Keys.LEFT)) moveX(-300 * deltaTime);
-        if (input.isKeyPressed(Keys.UP)) moveY(300 * deltaTime);
-        if (input.isKeyPressed(Keys.DOWN)) moveY(-300 * deltaTime);
+        if(input.isKeyPressed(Keys.RIGHT)) moveX(300 * deltaTime);
+        if(input.isKeyPressed(Keys.LEFT)) moveX(-300 * deltaTime);
+        if(input.isKeyPressed(Keys.UP)) moveY(300 * deltaTime);
+        if(input.isKeyPressed(Keys.DOWN)) moveY(-300 * deltaTime);
     }
 
     void moveX(float delta) {
