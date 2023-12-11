@@ -1,5 +1,6 @@
 package com.combattale;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,8 +16,20 @@ public class PlayerHeart extends Element {
 
     @Override
     public void create() {
-        position = new Vector2(365, 100);
-        texture = new Texture("Undertale.png");
+        texture = new Texture("textures/Undertale.png");
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
+        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
+
+        int playerHeartPositionX = (width - playerHeartWidth) / 2 ; // Adjust the value as needed
+        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
+
+        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
+
     }
 
     @Override

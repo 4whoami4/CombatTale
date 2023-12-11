@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.utils.Element;
+import com.badlogic.gdx.audio.Sound;
 
 import java.util.ArrayList;
 
@@ -19,12 +20,16 @@ public class Game extends ApplicationAdapter {
     private SpriteBatch batch;
     private OrthographicCamera camera;
 
+    private Sound backGroundThemeSong;
+
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         batch = new SpriteBatch();
         elements.forEach(Element::create);
+        backGroundThemeSong = Gdx.audio.newSound(Gdx.files.internal("Sounds/megalovania.mp3"));
+        backGroundThemeSong.loop();
     }
 
     @Override
@@ -38,6 +43,7 @@ public class Game extends ApplicationAdapter {
         elements.forEach((e) -> e.render(batch));
         batch.end();
         elements.forEach((e) -> e.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime()));
+
     }
 
     public void resize(int width, int height) {
@@ -56,6 +62,7 @@ public class Game extends ApplicationAdapter {
     @Override
     public void dispose() {
         elements.forEach(Element::dispose);
+        backGroundThemeSong.dispose();
         batch.dispose();
     }
 }

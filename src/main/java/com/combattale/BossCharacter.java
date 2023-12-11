@@ -1,22 +1,33 @@
 package com.combattale;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.utils.Element;
 
 public class BossCharacter extends Element {
-    private static final float SCALE = 0.5f;
+    private static final float SCALE = 0.2f;
 
     private Texture texture;
     private Vector2 position;
 
     @Override
     public void create() {
-       texture = new Texture("skeleton.png");
-       position = new Vector2(300, 270);
+        texture = new Texture("textures/BOSS1STANDING.png");
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
+    @Override
+    public void resize(int width, int height) {
+        int bossCharacterWidth = (int) (texture.getWidth() * SCALE);
+        int bossCharacterHeight = (int) (texture.getHeight() * SCALE);
+
+        int bossCharacterX = (width - bossCharacterWidth) / 2 ; // Adjust the value as needed
+        int bossCharacterY = (height - bossCharacterHeight) / 2 + 100;
+
+        position = new Vector2(bossCharacterX, bossCharacterY);
+    }
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(
