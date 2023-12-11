@@ -23,7 +23,7 @@ public class Game extends ApplicationAdapter {
     @Override
     public void create() {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         batch = new SpriteBatch();
         boss = new BossCharacter();
         elements.forEach(Element::create);
@@ -44,6 +44,7 @@ public class Game extends ApplicationAdapter {
     }
 
     public void resize(int width, int height) {
+        camera.setToOrtho(false, width, height);
         elements.forEach((e) -> e.resize(width, height));
     }
 
