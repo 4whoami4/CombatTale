@@ -3,30 +3,33 @@ package com.combattale;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.utils.Element;
 
-public class BossCharacter {
-    private Texture bossTexture;
+public class BossCharacter extends Element {
+    private static final float SCALE = 0.5f;
+
+    private Texture texture;
     private Vector2 position;
 
-    private float scale;
-
-    public BossCharacter() {
-        scale = 0.5f; // Adjust the scale factor as needed
-
-        bossTexture = new Texture("skeleton.png"); // Replace with your boss character texture path
-        position = new Vector2(300, 270); // Set the initial position of the boss character
+    @Override
+    public void create() {
+       texture = new Texture("skeleton.png");
+       position = new Vector2(300, 270);
     }
 
-    public void update(float deltaTime) {
-        // Add any logic here to update the boss character's behavior
-    }
-
+    @Override
     public void render(SpriteBatch batch) {
-
-        batch.draw(bossTexture, position.x, position.y, bossTexture.getWidth() * scale, bossTexture.getHeight() * scale);
+        batch.draw(
+            texture,
+            position.x,
+            position.y,
+            texture.getWidth() * SCALE,
+            texture.getHeight() * SCALE
+        );
     }
 
+    @Override
     public void dispose() {
-        bossTexture.dispose();
+        texture.dispose();
     }
 }

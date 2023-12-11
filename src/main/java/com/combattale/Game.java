@@ -13,19 +13,17 @@ import java.util.ArrayList;
 public class Game extends ApplicationAdapter {
     private final ArrayList<Element> elements = new ArrayList<>() {{
         add(new PlayerHeart());
+        add(new BossCharacter());
     }};
 
     private SpriteBatch batch;
     private OrthographicCamera camera;
-
-    private BossCharacter boss;
 
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         batch = new SpriteBatch();
-        boss = new BossCharacter();
         elements.forEach(Element::create);
     }
 
@@ -38,7 +36,6 @@ public class Game extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         elements.forEach((e) -> e.render(batch));
-        boss.render(batch);
         batch.end();
         elements.forEach((e) -> e.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime()));
     }
@@ -60,6 +57,5 @@ public class Game extends ApplicationAdapter {
     public void dispose() {
         elements.forEach(Element::dispose);
         batch.dispose();
-        boss.dispose();
     }
 }
