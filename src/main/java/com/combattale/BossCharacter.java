@@ -13,7 +13,7 @@ public class BossCharacter extends Element {
 
     @Override
     public void create() {
-       texture = new Texture("skeleton.png");
+       texture = new Texture("textures/BOSS1STANDING.png");
        position = new Vector2(300, 270);
     }
 
