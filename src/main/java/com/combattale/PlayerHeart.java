@@ -14,22 +14,39 @@ public class PlayerHeart extends Element {
     public Vector2 position;
     private Texture texture;
 
+    private int borderX;
+    private int borderY;
+    private int borderWidth;
+    private int borderHeight;
+
+
     @Override
     public void create() {
         texture = new Texture("textures/Undertale.png");
         resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        borderX = 315;
+        borderY = 110;
+        borderWidth = 400;
+        borderHeight = 130;
     }
 
     @Override
     public void resize(int width, int height) {
+        super.resize(width, height); // Call the parent resize() method
         int playerHeartWidth = (int) (texture.getWidth() * SCALE);
         int playerHeartHeight = (int) (texture.getHeight() * SCALE);
 
-        int playerHeartPositionX = (width - playerHeartWidth) / 2 ; // Adjust the value as needed
+        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
         int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
 
         position = new Vector2(playerHeartPositionX, playerHeartPositionY);
 
+        // Update the border limits based on the new screen dimensions
+        borderX = (int) (0.31 * width); // Adjust the value as needed
+        borderY = (int) (0.173 * height); // Adjust the value as needed
+        borderWidth = (int) (0.385 * width); // Adjust the value as needed
+        borderHeight = (int) (0.2 * height); // Adjust the value as needed
     }
 
     @Override
@@ -45,18 +62,45 @@ public class PlayerHeart extends Element {
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
-        if (input.isKeyPressed(Keys.RIGHT)) moveX(300 * deltaTime);
-        if (input.isKeyPressed(Keys.LEFT)) moveX(-300 * deltaTime);
-        if (input.isKeyPressed(Keys.UP)) moveY(300 * deltaTime);
-        if (input.isKeyPressed(Keys.DOWN)) moveY(-300 * deltaTime);
-    }
+        // Get the current position of the player heart
+        float heartX = position.x;
+        float heartY = position.y;
 
-    void moveX(float delta) {
-        position.x += delta;
-    }
+        // Calculate the new position based on user input
+        if (input.isKeyPressed(Keys.RIGHT)) {
+            heartX += 300 * deltaTime;
+        }
+        if (input.isKeyPressed(Keys.LEFT)) {
+            heartX -= 300 * deltaTime;
+        }
+        if (input.isKeyPressed(Keys.UP)) {
+            heartY += 300 * deltaTime;
+        }
+        if (input.isKeyPressed(Keys.DOWN)) {
+            heartY -= 300 * deltaTime;
+        }
 
-    void moveY(float delta) {
-        position.y += delta;
+        // Restrict the new position to stay within the border limits
+        float minX = borderX;
+        float maxX = borderX + borderWidth - texture.getWidth() * SCALE;
+        float minY = borderY;
+        float maxY = borderY + borderHeight - texture.getHeight() * SCALE;
+
+        if (heartX < minX) {
+            heartX = minX;
+        } else if (heartX > maxX) {
+            heartX = maxX;
+        }
+
+        if (heartY < minY) {
+            heartY = minY;
+        } else if (heartY > maxY) {
+            heartY = maxY;
+        }
+
+        // Update the position of the player heart
+        position.x = heartX;
+        position.y = heartY;
     }
 
     @Override

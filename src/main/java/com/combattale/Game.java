@@ -2,6 +2,7 @@ package com.combattale;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,6 +23,8 @@ public class Game extends ApplicationAdapter {
 
     private Sound backGroundThemeSong;
 
+    private FirstMiniGameBorder firstGameBorder;
+
     @Override
     public void create() {
         camera = new OrthographicCamera();
@@ -30,6 +33,7 @@ public class Game extends ApplicationAdapter {
         elements.forEach(Element::create);
         backGroundThemeSong = Gdx.audio.newSound(Gdx.files.internal("Sounds/megalovania.mp3"));
         backGroundThemeSong.loop();
+        firstGameBorder = new FirstMiniGameBorder();
     }
 
     @Override
@@ -43,12 +47,16 @@ public class Game extends ApplicationAdapter {
         elements.forEach((e) -> e.render(batch));
         batch.end();
         elements.forEach((e) -> e.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime()));
+        firstGameBorder.render(315, 110, 400, 130, Color.WHITE);
 
     }
 
+    @Override
     public void resize(int width, int height) {
         camera.setToOrtho(false, width, height);
-        elements.forEach((e) -> e.resize(width, height));
+        elements.forEach((e) -> {
+            e.resize(width, height);
+        });
     }
 
     public void pause() {
@@ -63,6 +71,7 @@ public class Game extends ApplicationAdapter {
     public void dispose() {
         elements.forEach(Element::dispose);
         backGroundThemeSong.dispose();
+        firstGameBorder.dispose();
         batch.dispose();
     }
 }

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="843b57c0-753a-43fd-8bd6-4145130a3852" name="Changes" comment="New texture for boss 1">
+    <list default="true" id="843b57c0-753a-43fd-8bd6-4145130a3852" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/combattale/BossCharacter.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/FirstMiniGameBorder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/BossCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/BossCharacter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/PlayerHeart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/PlayerHeart.java" afterDir="false" />
     </list>
@@ -44,6 +44,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="4whoami4 &lt;kristofer127@interia.pl&gt;" />
+      </list>
+    </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -65,10 +71,14 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/LAPTOP/Downloads/CombatTale/libs",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -110,6 +120,8 @@
       <updated>1701460696345</updated>
       <workItem from="1701460697458" duration="779000" />
       <workItem from="1701461793899" duration="1910000" />
+      <workItem from="1702552673734" duration="101000" />
+      <workItem from="1702555916443" duration="8403000" />
     </task>
     <task id="LOCAL-00001" summary="New texture for boss 1">
       <option name="closed" value="true" />
@@ -119,14 +131,58 @@
       <option name="project" value="LOCAL" />
       <updated>1702370308735</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="New texture for boss 1">
+      <option name="closed" value="true" />
+      <created>1702401364377</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702401364377</updated>
+    </task>
+    <task id="LOCAL-00003" summary="New texture for boss 1">
+      <option name="closed" value="true" />
+      <created>1702401396833</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702401396833</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/combattale/BossCharacter.java">
+      <option name="closed" value="true" />
+      <created>1702401473202</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702401473202</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/combattale/BossCharacter.java">
+      <option name="closed" value="true" />
+      <created>1702401552490</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702401552490</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New texture for boss 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="New texture for boss 1" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/combattale/BossCharacter.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/combattale/BossCharacter.java" />
   </component>
 </project>
