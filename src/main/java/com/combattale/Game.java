@@ -54,9 +54,7 @@ public class Game extends ApplicationAdapter {
     @Override
     public void resize(int width, int height) {
         camera.setToOrtho(false, width, height);
-        elements.forEach((e) -> {
-            e.resize(width, height);
-        });
+        elements.forEach((e) -> e.resize(width, height));
     }
 
     public void pause() {

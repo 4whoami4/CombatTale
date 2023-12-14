@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 
 public class FirstMiniGameBorder {
-    private ShapeRenderer firstGameBorder;
+    private final ShapeRenderer firstGameBorder;
 
     public FirstMiniGameBorder() {
         firstGameBorder = new ShapeRenderer();
