@@ -16,13 +16,12 @@ public class Game extends ApplicationAdapter {
     private final ArrayList<Element> elements = new ArrayList<>() {{
         add(new PlayerHeart());
         add(new BossCharacter());
+        add(new MainMenu());
+        add(new BackgroundMusic());
     }};
 
     private SpriteBatch batch;
     private OrthographicCamera camera;
-
-    private Sound backGroundThemeSong;
-
     private FirstMiniGameBorder firstGameBorder;
 
     @Override
@@ -31,8 +30,6 @@ public class Game extends ApplicationAdapter {
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         batch = new SpriteBatch();
         elements.forEach(Element::create);
-        backGroundThemeSong = Gdx.audio.newSound(Gdx.files.internal("Sounds/megalovania.mp3"));
-        backGroundThemeSong.loop();
         firstGameBorder = new FirstMiniGameBorder();
     }
 
@@ -68,7 +65,6 @@ public class Game extends ApplicationAdapter {
     @Override
     public void dispose() {
         elements.forEach(Element::dispose);
-        backGroundThemeSong.dispose();
         firstGameBorder.dispose();
         batch.dispose();
     }
