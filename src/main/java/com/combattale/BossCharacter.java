@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.combattale.utils.Element;
 
 public class BossCharacter extends Element {
-    private static final float SCALE = 0.2f;
+    private static final float SCALE = 0.3f;
 
     private Texture texture;
     private Vector2 position;
@@ -15,7 +15,7 @@ public class BossCharacter extends Element {
     @Override
     public void create() {
         texture = new Texture("textures/BOSS1STANDING.png");
-        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       position = new Vector2(300, 270);
     }
 
     @Override
@@ -28,6 +28,7 @@ public class BossCharacter extends Element {
 
         position = new Vector2(bossCharacterX, bossCharacterY);
     }
+
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(

@@ -23,7 +23,6 @@ public class PlayerHeart extends Element {
     @Override
     public void create() {
         texture = new Texture("textures/Undertale.png");
-        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         borderX = 315;
         borderY = 110;
@@ -32,25 +31,8 @@ public class PlayerHeart extends Element {
     }
 
     @Override
-    public void resize(int width, int height) {
-        super.resize(width, height); // Call the parent resize() method
-        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
-        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
-
-        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
-        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
-
-        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
-
-        // Update the border limits based on the new screen dimensions
-        borderX = (int) (0.31 * width); // Adjust the value as needed
-        borderY = (int) (0.173 * height); // Adjust the value as needed
-        borderWidth = (int) (0.385 * width); // Adjust the value as needed
-        borderHeight = (int) (0.2 * height); // Adjust the value as needed
-    }
-
-    @Override
     public void render(SpriteBatch batch) {
+        if (position == null) return;
         batch.draw(
             texture,
             position.x,
@@ -62,6 +44,8 @@ public class PlayerHeart extends Element {
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
+        if (position == null) return;
+
         // Get the current position of the player heart
         float heartX = position.x;
         float heartY = position.y;
@@ -101,6 +85,25 @@ public class PlayerHeart extends Element {
         // Update the position of the player heart
         position.x = heartX;
         position.y = heartY;
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
+        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
+
+        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
+        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
+
+        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
+
+        // Update the border limits based on the new screen dimensions
+        borderX = (int) (0.31 * width); // Adjust the value as needed
+        borderY = (int) (0.173 * height); // Adjust the value as needed
+        borderWidth = (int) (0.385 * width); // Adjust the value as needed
+        borderHeight = (int) (0.2 * height); // Adjust the value as needed
     }
 
     @Override
