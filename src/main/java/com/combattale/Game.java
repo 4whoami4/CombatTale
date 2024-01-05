@@ -2,34 +2,25 @@ package com.combattale;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.combattale.components.*;
-import com.combattale.utils.Component;
-
-import java.util.ArrayList;
+import com.combattale.scenes.MenuScene;
+import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
-    private final ArrayList<Component> components = new ArrayList<>() {{
-        add(new PlayerHeart());
-        add(new BossCharacter());
-        add(new MainMenu());
-        add(new BackgroundMusic());
-    }};
-
     private SpriteBatch batch;
     private OrthographicCamera camera;
-    private FirstMiniGameBorder firstGameBorder;
+    private Scene activeScene;
 
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         batch = new SpriteBatch();
-        components.forEach(Component::create);
-        firstGameBorder = new FirstMiniGameBorder();
+
+        setScene(new MenuScene());
     }
 
     @Override
@@ -40,29 +31,38 @@ public class Game extends ApplicationAdapter {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        components.forEach((e) -> e.render(batch));
+        activeScene.render(batch);
         batch.end();
-        components.forEach((e) -> e.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime()));
+        activeScene.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime());
     }
 
     @Override
     public void resize(int width, int height) {
         camera.setToOrtho(false, width, height);
-        components.forEach((e) -> e.resize(width, height));
+        activeScene.resize(width, height);
     }
 
+    @Override
     public void pause() {
-        components.forEach(Component::pause);
+        activeScene.pause();
     }
 
+    @Override
     public void resume() {
-        components.forEach(Component::resume);
+        activeScene.resume();
     }
 
     @Override
     public void dispose() {
-        components.forEach(Component::dispose);
-        firstGameBorder.dispose();
+        activeScene.dispose();
         batch.dispose();
+    }
+
+    private void setScene(Scene scene) {
+        if (activeScene != null) {
+            activeScene.dispose();
+        }
+        activeScene = scene;
+        scene.create();
     }
 }
