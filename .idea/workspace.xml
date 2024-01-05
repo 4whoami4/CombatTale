@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="141a2341-5385-41b3-ad7a-0a51901189a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/BackgroundMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +43,7 @@
       <module name="CombatTale.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.combattale.*" />
+          <option name="PATTERN" value="com.combattale.components.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -67,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704481466957</updated>
-      <workItem from="1704481470418" duration="325000" />
+      <workItem from="1704481470418" duration="568000" />
     </task>
     <servers />
   </component>

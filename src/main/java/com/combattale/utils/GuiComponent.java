@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class GuiElement extends Element {
+public abstract class GuiComponent extends Component {
 
     protected void drawText(SpriteBatch batch, String text, BitmapFont font, GuiPosition position, Vector2 offset) {
         final GlyphLayout layout = new GlyphLayout();

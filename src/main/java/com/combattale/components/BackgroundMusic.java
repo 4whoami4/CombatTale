@@ -1,10 +1,10 @@
-package com.combattale;
+package com.combattale.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.combattale.utils.Element;
+import com.combattale.utils.Component;
 
-public class BackgroundMusic extends Element {
+public class BackgroundMusic extends Component {
     private Sound backgroundThemeSong;
 
     @Override

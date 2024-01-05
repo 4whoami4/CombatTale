@@ -1,12 +1,11 @@
-package com.combattale;
+package com.combattale.components;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.combattale.utils.Element;
+import com.combattale.utils.Component;
 
-public class BossCharacter extends Element {
+public class BossCharacter extends Component {
     private static final float SCALE = 0.3f;
 
     private Texture texture;

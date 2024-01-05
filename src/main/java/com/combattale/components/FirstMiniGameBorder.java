@@ -1,4 +1,4 @@
-package com.combattale;
+package com.combattale.components;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;

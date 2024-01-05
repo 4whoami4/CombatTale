@@ -1,14 +1,13 @@
-package com.combattale;
+package com.combattale.components;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.combattale.utils.Element;
+import com.combattale.utils.Component;
 
-public class PlayerHeart extends Element {
+public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
     public Vector2 position;
