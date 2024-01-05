@@ -2,6 +2,7 @@ package com.combattale.utils;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import java.util.ArrayList;
 
@@ -22,8 +23,8 @@ public abstract class Scene extends Component {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
-        components.forEach((e) -> e.render(batch));
+    public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        components.forEach((e) -> e.render(spriteBatch, shapeRenderer));
     }
 
     @Override

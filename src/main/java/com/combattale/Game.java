@@ -5,12 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
-    private SpriteBatch batch;
+    private SpriteBatch spriteBatch;
+    private ShapeRenderer shapeRenderer;
     private OrthographicCamera camera;
     private Scene activeScene;
 
@@ -18,7 +20,8 @@ public class Game extends ApplicationAdapter {
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
-        batch = new SpriteBatch();
+        spriteBatch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
 
         setScene(new MenuScene());
     }
@@ -29,10 +32,18 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        activeScene.render(batch);
-        batch.end();
+
+        spriteBatch.setProjectionMatrix(camera.combined);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+
+        spriteBatch.begin();
+        shapeRenderer.begin();
+
+        activeScene.render(spriteBatch, shapeRenderer);
+
+        spriteBatch.end();
+        shapeRenderer.end();
+
         activeScene.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime());
     }
 
@@ -55,7 +66,8 @@ public class Game extends ApplicationAdapter {
     @Override
     public void dispose() {
         activeScene.dispose();
-        batch.dispose();
+        spriteBatch.dispose();
+        shapeRenderer.dispose();
     }
 
     private void setScene(Scene scene) {

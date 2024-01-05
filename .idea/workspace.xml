@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="141a2341-5385-41b3-ad7a-0a51901189a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/scenes/FirstStageScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/scenes/MenuScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/components/BossCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/components/BossCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/components/PlayerHeart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/components/PlayerHeart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/combattale/utils/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704481466957</updated>
-      <workItem from="1704481470418" duration="3469000" />
+      <workItem from="1704481470418" duration="3899000" />
     </task>
     <servers />
   </component>
