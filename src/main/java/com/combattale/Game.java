@@ -22,6 +22,7 @@ public class Game extends ApplicationAdapter {
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
 
         setScene(new MenuScene());
     }

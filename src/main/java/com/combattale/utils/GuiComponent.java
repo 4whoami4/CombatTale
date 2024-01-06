@@ -9,30 +9,11 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class GuiComponent extends Component {
 
-    protected void drawText(SpriteBatch batch, String text, BitmapFont font, GuiPosition position, Vector2 offset) {
-        final GlyphLayout layout = new GlyphLayout();
-        layout.setText(font, text);
-        drawText(batch, layout, font, position, offset);
-    }
-
-    protected void drawText(SpriteBatch batch, String text, BitmapFont font, GuiPosition position) {
-        drawText(batch, text, font, position, Vector2.Zero);
-    }
-
-    protected void drawText(SpriteBatch batch, GlyphLayout layout, BitmapFont font, GuiPosition position, Vector2 offset) {
-        final Vector2 pos = calcPosition(position, layout.width, layout.height);
-        font.draw(batch, layout, pos.x + offset.x, pos.y + offset.y);
-    }
-
-    protected void drawText(SpriteBatch batch, GlyphLayout layout, BitmapFont font, GuiPosition position) {
-        drawText(batch, layout, font, position, Vector2.Zero);
-    }
-
     protected void drawButton(SpriteBatch batch, BitmapFont font, GuiPosition position, Vector2 offset, float width, float height) {
         final Vector2 pos = calcPosition(position, width, height);
         final Vector2 mousePos = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 
-        drawText(batch, "(" + mousePos.x + "," + mousePos.y +")", font, GuiPosition.CENTER);
+//        drawText(batch, "(" + mousePos.x + "," + mousePos.y +")", font, GuiPosition.CENTER);
 
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
