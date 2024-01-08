@@ -15,6 +15,7 @@ public class Button extends Text {
     private Vector2 padding = Vector2.Zero;
     private Color color = Color.BLUE;
     private Color hoverColor = Color.RED;
+    private boolean isHovered = false;
     private Runnable onClick;
 
     public Button(String text, BitmapFont font) {
@@ -42,23 +43,31 @@ public class Button extends Text {
     }
 
     @Override
+    public Button withPosition(GuiPosition position) {
+        this.position = position;
+        return this;
+    }
+
+    @Override
+    public Button withOffset(Vector2 offset) {
+        this.offset = offset;
+        return this;
+    }
+
+    @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         final Vector2 pos = calcPosition(position, layout.width, layout.height);
-        final Vector2 mousePos = getMousePosition();
         final Rectangle rect = new Rectangle(
                 pos.x - padding.x + offset.x,
                 pos.y - padding.y + offset.y,
                 layout.width + padding.x * 2,
                 layout.height + padding.y * 2
         );
+        isHovered = rect.contains(getMousePosition());
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
-        if (rect.contains(mousePos)) {
-            shapeRenderer.setColor(hoverColor);
-        } else {
-            shapeRenderer.setColor(color);
-        }
+        shapeRenderer.setColor(isHovered ? hoverColor : color);
         shapeRenderer.end();
 
         spriteBatch.begin();
@@ -73,18 +82,7 @@ public class Button extends Text {
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
-        if (!input.isButtonPressed(Input.Buttons.LEFT) || onClick == null) return;
-
-        final Vector2 mousePos = getMousePosition();
-        final Vector2 pos = calcPosition(position, layout.width, layout.height);
-        final Rectangle rect = new Rectangle(
-                pos.x - padding.x + offset.x,
-                pos.y - padding.y + offset.y,
-                layout.width + padding.x * 2,
-                layout.height + padding.y * 2
-        );
-
-        if (rect.contains(mousePos)) {
+        if (onClick != null && isHovered && input.isButtonJustPressed(Input.Buttons.LEFT)) {
             onClick.run();
         }
     }

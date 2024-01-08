@@ -6,25 +6,25 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.combattale.utils.Component;
 
-public class FirstMiniGameBorder extends Component {
+public class FirstMiniGameBorder extends Component {private final ShapeRenderer firstGameBorder;
 
-    private Rectangle rect;
+    public static final int START_X_POSITION_MINIGAME_BORDER = 315;
+    public static final int START_Y_POSITION_MINIGAME_BORDER = 110;
+    public static final int WIDTH_POSITION_MINIGAME_BORDER = 400;
+    public static final int HEIGHT_POSITION_MINIGAME_BORDER = 130;
 
-    @Override
-    public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        if (rect == null) return;
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
-        shapeRenderer.end();
+    public FirstMiniGameBorder() {
+        firstGameBorder = new ShapeRenderer();
     }
 
-    @Override
-    public void resize(int width, int height) {
-        // TODO: Adjust the position and size of the border
-        final int centerX = width / 2 - 200;
-        rect = new Rectangle(centerX, 0, 400, 130);
+    public void render(int x, int y, int width, int height, Color color) {
+        firstGameBorder.begin(ShapeRenderer.ShapeType.Line);
+        firstGameBorder.setColor(color);
+        firstGameBorder.rect(x, y, width, height);
+        firstGameBorder.end();
+    }
+    public void dispose() {
+        firstGameBorder.dispose();
     }
 }
-
