@@ -7,10 +7,14 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.*;
 
 public class Fonts {
     public static final BitmapFont TITLE_FONT;
+    public static final BitmapFont BUTTON_FONT;
 
     static {
         TITLE_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
             size = 72;
+        }});
+        BUTTON_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
+            size = 18;
         }});
     }
 

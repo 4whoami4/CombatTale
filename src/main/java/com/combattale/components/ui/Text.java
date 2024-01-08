@@ -12,8 +12,8 @@ public class Text extends GuiComponent {
     final GlyphLayout layout = new GlyphLayout();
     final BitmapFont font;
 
-    private GuiPosition position = GuiPosition.CENTER;
-    private Vector2 offset = Vector2.Zero;
+    protected GuiPosition position = GuiPosition.CENTER;
+    protected Vector2 offset = Vector2.Zero;
 
     public Text(String text, BitmapFont font) {
         this.font = font;

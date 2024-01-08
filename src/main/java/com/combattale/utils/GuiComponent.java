@@ -1,33 +1,8 @@
 package com.combattale.utils;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class GuiComponent extends Component {
-
-    protected void drawButton(SpriteBatch batch, BitmapFont font, GuiPosition position, Vector2 offset, float width, float height) {
-        final Vector2 pos = calcPosition(position, width, height);
-        final Vector2 mousePos = new Vector2(Gdx.input.getX(), Gdx.input.getY());
-
-//        drawText(batch, "(" + mousePos.x + "," + mousePos.y +")", font, GuiPosition.CENTER);
-
-        ShapeRenderer shapeRenderer = new ShapeRenderer();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        if (mousePos.x > pos.x + offset.x && mousePos.x < pos.x + offset.x + width && mousePos.y > pos.y + offset.y && mousePos.y < pos.y + offset.y + height) {
-            shapeRenderer.setColor(0.7f, 0.7f, 0.7f, 1);
-        } else {
-            shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1);
-        }
-
-        shapeRenderer.rect(pos.x + offset.x, pos.y + offset.y, width, height);
-        shapeRenderer.end();
-    }
-
     protected Vector2 calcPosition(GuiPosition position, float width, float height) {
         return switch (position) {
             case LEFT_TOP -> new Vector2(0, screenSize.y);
