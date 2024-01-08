@@ -33,6 +33,7 @@ public class PlayerHeart extends Component {
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         if (position == null) return;
+        spriteBatch.begin();
         spriteBatch.draw(
             texture,
             position.x,
@@ -40,6 +41,7 @@ public class PlayerHeart extends Component {
             texture.getWidth() * SCALE,
             texture.getHeight() * SCALE
         );
+        spriteBatch.end();
     }
 
     @Override

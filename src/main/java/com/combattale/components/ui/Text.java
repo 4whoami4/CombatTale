@@ -33,6 +33,8 @@ public class Text extends GuiComponent {
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         final Vector2 pos = calcPosition(position, layout.width, layout.height);
+        spriteBatch.begin();
         font.draw(spriteBatch, layout, pos.x + offset.x, pos.y + offset.y);
+        spriteBatch.end();
     }
 }

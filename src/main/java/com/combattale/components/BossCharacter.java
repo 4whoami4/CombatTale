@@ -31,6 +31,7 @@ public class BossCharacter extends Component {
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        spriteBatch.begin();
         spriteBatch.draw(
             texture,
             position.x,
@@ -38,6 +39,7 @@ public class BossCharacter extends Component {
             texture.getWidth() * SCALE,
             texture.getHeight() * SCALE
         );
+        spriteBatch.end();
     }
 
     @Override

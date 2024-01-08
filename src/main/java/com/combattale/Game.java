@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.combattale.scenes.FirstStageScene;
 import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Scene;
 
@@ -24,7 +25,7 @@ public class Game extends ApplicationAdapter {
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
 
-        setScene(new MenuScene());
+        setScene(new FirstStageScene());
     }
 
     @Override
@@ -37,13 +38,7 @@ public class Game extends ApplicationAdapter {
         spriteBatch.setProjectionMatrix(camera.combined);
         shapeRenderer.setProjectionMatrix(camera.combined);
 
-        spriteBatch.begin();
-        shapeRenderer.begin();
-
         activeScene.render(spriteBatch, shapeRenderer);
-
-        spriteBatch.end();
-        shapeRenderer.end();
 
         activeScene.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime());
     }
