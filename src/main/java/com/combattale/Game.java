@@ -2,14 +2,12 @@ package com.combattale;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.combattale.components.FirstMiniGameBorder;
-import com.combattale.scenes.MenuScene;
+import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
@@ -34,7 +32,7 @@ public class Game extends ApplicationAdapter {
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        setScene(new MenuScene());
+        setScene(new FirstStageScene());
     }
 
     @Override
@@ -49,22 +47,6 @@ public class Game extends ApplicationAdapter {
         activeScene.render(spriteBatch, shapeRenderer);
 
         activeScene.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime());
-
-        int borderX = FirstMiniGameBorder.START_X_POSITION_MINIGAME_BORDER; // Adjust the X position as needed
-        int borderY = FirstMiniGameBorder.START_Y_POSITION_MINIGAME_BORDER; // Adjust the Y position as needed
-        int borderWidth = FirstMiniGameBorder.WIDTH_POSITION_MINIGAME_BORDER; // Adjust the width as needed
-        int borderHeight = FirstMiniGameBorder.HEIGHT_POSITION_MINIGAME_BORDER; // Adjust the height as needed
-        int borderThickness = 4; // Adjust the thickness as needed
-
-        for (int i = 0; i < borderThickness; i++) {
-            int adjustedX = borderX - i;
-            int adjustedY = borderY - i;
-            int adjustedWidth = borderWidth + i * 2;
-            int adjustedHeight = borderHeight + i * 2;
-            Color borderColor = Color.WHITE; // Adjust the color as needed
-
-            firstGameBorder.render(adjustedX, adjustedY, adjustedWidth, adjustedHeight, borderColor);
-        }
     }
 
     @Override
@@ -96,10 +78,5 @@ public class Game extends ApplicationAdapter {
         }
         activeScene = scene;
         scene.create();
-    }
-
-    // Example method to start a new game
-    public void startNewGame() {
-        // Implement the logic to start a new game
     }
 }
