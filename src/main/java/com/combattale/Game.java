@@ -73,7 +73,7 @@ public class Game extends ApplicationAdapter {
         shapeRenderer.dispose();
     }
 
-    private void setScene(Scene scene) {
+    public void setScene(Scene scene) {
         if (activeScene != null) {
             activeScene.dispose();
         }

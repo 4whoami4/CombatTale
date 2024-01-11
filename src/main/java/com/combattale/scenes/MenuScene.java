@@ -2,6 +2,7 @@ package com.combattale.scenes;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.Game;
 import com.combattale.components.ui.Button;
 import com.combattale.components.ui.Text;
 import com.combattale.utils.Component;
@@ -19,18 +20,20 @@ public class MenuScene extends Scene {
         add("Exit");
     }};
     private final ArrayList<Runnable> buttonActions = new ArrayList<>() {{
-        add(() -> System.out.println("Start Game clicked"));
+        add(() -> Game.instance.setScene(new FirstStageScene()));
         add(() -> System.out.println("Options clicked"));
         add(() -> System.out.println("Leaderboard clicked"));
-        add(() -> System.out.println("Exit clicked"));
+        add(() -> System.exit(0));
     }};
 
     private Button createButton(String text, Vector2 offset, Runnable onClickAction) {
         return new Button(text, Fonts.BUTTON_FONT)
                 .withOnClick(onClickAction)
                 .withPadding(new Vector2(10, 10))
-                .withTextColor(Color.CHARTREUSE)
-                .withTextHoverColor(Color.CORAL)
+                .withTextColor(Color.WHITE)
+                .withTextHoverColor(Color.GREEN)
+                .withColor(Color.BLACK)
+                .withHoverColor(Color.BLACK)
                 .withOffset(offset);
     }
 
@@ -38,7 +41,7 @@ public class MenuScene extends Scene {
     public ArrayList<Component> getComponents() {
         final ArrayList<Component> components = new ArrayList<>();
         components.add(
-                new Text("Main Menu", Fonts.TITLE_FONT).withOffset(new Vector2(0, 210))
+                new Text("Combat Tale", Fonts.TITLE_FONT).withOffset(new Vector2(0, 210))
         );
         for (int i = 0; i < buttonTexts.size(); i++) {
             components.add(
@@ -48,3 +51,4 @@ public class MenuScene extends Scene {
         return components;
     }
 }
+
