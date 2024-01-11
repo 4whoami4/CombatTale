@@ -9,17 +9,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.components.FirstMiniGameBorder;
-import com.combattale.scenes.FirstStageScene;
 import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
+    public static Game instance;
+
     private SpriteBatch spriteBatch;
     private ShapeRenderer shapeRenderer;
     private OrthographicCamera camera;
     private Scene activeScene;
 
-    private FirstMiniGameBorder firstGameBorder;
+    public Game() {
+        if (instance != null) {
+            throw new IllegalStateException("Instance of Game already exists!");
+        }
+        instance = this;
+    }
 
     @Override
     public void create() {
@@ -27,11 +33,8 @@ public class Game extends ApplicationAdapter {
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setAutoShapeType(true);
 
-        firstGameBorder = new FirstMiniGameBorder();
-
-        setScene(new FirstStageScene());
+        setScene(new MenuScene());
     }
 
     @Override
@@ -93,5 +96,10 @@ public class Game extends ApplicationAdapter {
         }
         activeScene = scene;
         scene.create();
+    }
+
+    // Example method to start a new game
+    public void startNewGame() {
+        // Implement the logic to start a new game
     }
 }

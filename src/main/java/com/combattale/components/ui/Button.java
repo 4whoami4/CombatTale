@@ -66,8 +66,8 @@ public class Button extends Text {
         isHovered = rect.contains(getMousePosition());
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
         shapeRenderer.setColor(isHovered ? hoverColor : color);
+        shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
         shapeRenderer.end();
 
         spriteBatch.begin();
