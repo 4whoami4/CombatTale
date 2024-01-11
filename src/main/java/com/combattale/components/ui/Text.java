@@ -14,9 +14,11 @@ public class Text extends GuiComponent {
 
     protected GuiPosition position = GuiPosition.CENTER;
     protected Vector2 offset = Vector2.Zero;
+    protected String text;
 
     public Text(String text, BitmapFont font) {
         this.font = font;
+        this.text = text;
         layout.setText(font, text);
     }
 

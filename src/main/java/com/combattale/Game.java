@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.scenes.FirstStageScene;
+import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
@@ -32,7 +33,7 @@ public class Game extends ApplicationAdapter {
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        setScene(new FirstStageScene());
+        setScene(new MenuScene());
     }
 
     @Override

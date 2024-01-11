@@ -8,13 +8,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.utils.Fonts;
 import com.combattale.utils.GuiPosition;
 
 public class Button extends Text {
 
     private Vector2 padding = Vector2.Zero;
-    private Color color = Color.BLUE;
-    private Color hoverColor = Color.RED;
+    private Color color = Color.BLUE, hoverColor = Color.RED;
+    private Color textColor = Color.WHITE, textHoverColor = Color.WHITE;
     private boolean isHovered = false;
     private Runnable onClick;
 
@@ -34,6 +35,16 @@ public class Button extends Text {
 
     public Button withHoverColor(Color hoverColor) {
         this.hoverColor = hoverColor;
+        return this;
+    }
+
+    public Button withTextColor(Color textColor) {
+        this.textColor = textColor;
+        return this;
+    }
+
+    public Button withTextHoverColor(Color textHoverColor) {
+        this.textHoverColor = textHoverColor;
         return this;
     }
 
@@ -71,6 +82,11 @@ public class Button extends Text {
         shapeRenderer.end();
 
         spriteBatch.begin();
+        layout.setText(
+                font, text,
+                isHovered ? textHoverColor : textColor,
+                0.0F, 8, false
+        );
         font.draw(
                 spriteBatch,
                 layout,
