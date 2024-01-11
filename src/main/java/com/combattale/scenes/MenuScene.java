@@ -12,6 +12,19 @@ import com.combattale.utils.Scene;
 import java.util.ArrayList;
 
 public class MenuScene extends Scene {
+    private final ArrayList<String> buttonTexts = new ArrayList<>() {{
+        add("Start Game");
+        add("Options");
+        add("Leaderboard");
+        add("Exit");
+    }};
+    private final ArrayList<Runnable> buttonActions = new ArrayList<>() {{
+        add(() -> System.out.println("Start Game clicked"));
+        add(() -> System.out.println("Options clicked"));
+        add(() -> System.out.println("Leaderboard clicked"));
+        add(() -> System.out.println("Exit clicked"));
+    }};
+
     private Button createButton(String text, Vector2 offset, Runnable onClickAction) {
         return new Button(text, Fonts.BUTTON_FONT)
                 .withOnClick(onClickAction)
@@ -25,13 +38,12 @@ public class MenuScene extends Scene {
     public ArrayList<Component> getComponents() {
         final ArrayList<Component> components = new ArrayList<>();
         components.add(
-                new Text("Main Menu", Fonts.TITLE_FONT)
-                        .withOffset(new Vector2(0, 210))
+                new Text("Main Menu", Fonts.TITLE_FONT).withOffset(new Vector2(0, 210))
         );
-        for (int i = 0; i < 4; i++) {
-            components.add(createButton("Start Game", new Vector2(0, i * 60 - 180), () -> {
-                System.out.println("Start Game clicked");
-            }));
+        for (int i = 0; i < buttonTexts.size(); i++) {
+            components.add(
+                    createButton(buttonTexts.get(3 - i), new Vector2(0, i * 60 - 180), buttonActions.get(3 - i))
+            );
         }
         return components;
     }
