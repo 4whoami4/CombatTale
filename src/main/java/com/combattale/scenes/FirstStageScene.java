@@ -13,10 +13,10 @@ public class FirstStageScene extends Scene {
     @Override
     public ArrayList<Component> getComponents() {
         return new ArrayList<>() {{
-            add(new PlayerHeart());
-            add(new BossCharacter());
-            add(new FirstMiniGameBorder());
             add(new BackgroundMusic());
+            add(new FirstMiniGameBorder());
+            add(new BossCharacter());
+            add(new PlayerHeart());
         }};
     }
 }
