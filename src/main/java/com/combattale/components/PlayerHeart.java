@@ -15,6 +15,7 @@ public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
     private MiniGameBorder border;
+    private SafeZone safeZone;
     private Health health;
 
     private Rectangle limits;
@@ -25,6 +26,7 @@ public class PlayerHeart extends Component {
     public void create() {
         texture = new Texture("textures/Undertale.png");
         border = FirstStageScene.getComponent(MiniGameBorder.class);
+        safeZone = FirstStageScene.getComponent(SafeZone.class);
         health = FirstStageScene.getComponent(Health.class);
     }
 
@@ -40,12 +42,33 @@ public class PlayerHeart extends Component {
             texture.getHeight() * SCALE
         );
         spriteBatch.end();
+
+        if (!safeZone.isInZone(position)) {
+            health.decrease(1);
+        }
     }
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
         if (position == null) return;
+        movePlayer(input, deltaTime);
+    }
 
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
+        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
+
+        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
+        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
+
+        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
+        limits = border.getRect();
+    }
+
+    private void movePlayer(Input input, float deltaTime) {
         // Get the current position of the player heart
         float heartX = position.x;
         float heartY = position.y;
@@ -83,20 +106,6 @@ public class PlayerHeart extends Component {
         // Update the position of the player heart
         position.x = heartX;
         position.y = heartY;
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-
-        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
-        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
-
-        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
-        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
-
-        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
-        limits = border.getRect();
     }
 
     @Override

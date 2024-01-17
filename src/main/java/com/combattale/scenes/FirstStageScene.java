@@ -1,9 +1,6 @@
 package com.combattale.scenes;
 
-import com.combattale.components.BackgroundMusic;
-import com.combattale.components.BossCharacter;
-import com.combattale.components.MiniGameBorder;
-import com.combattale.components.PlayerHeart;
+import com.combattale.components.*;
 import com.combattale.components.ui.Health;
 import com.combattale.utils.Component;
 import com.combattale.utils.Scene;
@@ -16,6 +13,7 @@ public class FirstStageScene extends Scene {
         return new ArrayList<>() {{
             add(new BackgroundMusic());
             add(new MiniGameBorder());
+            add(new SafeZone());
             add(new BossCharacter());
             add(new PlayerHeart());
             add(new Health());
