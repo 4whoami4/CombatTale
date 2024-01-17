@@ -78,6 +78,10 @@ public class Game extends ApplicationAdapter {
             activeScene.dispose();
         }
         activeScene = scene;
-        scene.create();
+        activeScene.create();
+        activeScene.resize(
+                Gdx.graphics.getWidth(),
+                Gdx.graphics.getHeight()
+        );
     }
 }
