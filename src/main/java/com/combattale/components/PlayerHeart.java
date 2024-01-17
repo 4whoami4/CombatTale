@@ -5,29 +5,20 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.utils.Component;
 
 public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
+    private Rectangle limits;
     public Vector2 position;
     private Texture texture;
-
-    private int borderX;
-    private int borderY;
-    private int borderWidth;
-    private int borderHeight;
-
 
     @Override
     public void create() {
         texture = new Texture("textures/Undertale.png");
-
-        borderX = 315;
-        borderY = 110;
-        borderWidth = 400;
-        borderHeight = 130;
     }
 
     @Override
@@ -67,10 +58,8 @@ public class PlayerHeart extends Component {
         }
 
         // Restrict the new position to stay within the border limits
-        float minX = borderX;
-        float maxX = borderX + borderWidth - texture.getWidth() * SCALE;
-        float minY = borderY;
-        float maxY = borderY + borderHeight - texture.getHeight() * SCALE;
+        float minX = limits.x, maxX = minX + limits.width - texture.getWidth() * SCALE;
+        float minY = limits.y, maxY = minY + limits.height - texture.getHeight() * SCALE;
 
         if (heartX < minX) {
             heartX = minX;
@@ -100,12 +89,7 @@ public class PlayerHeart extends Component {
         int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
 
         position = new Vector2(playerHeartPositionX, playerHeartPositionY);
-
-        // Update the border limits based on the new screen dimensions
-        borderX = (int) (0.31 * width); // Adjust the value as needed
-        borderY = (int) (0.173 * height); // Adjust the value as needed
-        borderWidth = (int) (0.385 * width); // Adjust the value as needed
-        borderHeight = (int) (0.2 * height); // Adjust the value as needed
+        limits = FirstMiniGameBorder.getRect(width, height);
     }
 
     @Override
