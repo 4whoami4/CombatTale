@@ -44,10 +44,10 @@ public class FirstMiniGameBorder extends Component {
         );
     }
 
-    public static Rectangle getRect(int width, int height) {
+    public Rectangle getRect() {
         return new Rectangle(
-                width * 0.5f - WIDTH * 0.5f + 4,
-                height * 0.5f - HEIGHT * 0.5f - 150 + 4,
+                position.x + 4,
+                position.y + 4,
                 WIDTH - 8,
                 HEIGHT - 8
         );

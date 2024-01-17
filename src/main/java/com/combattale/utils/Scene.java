@@ -5,11 +5,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public abstract class Scene extends Component {
+    private static Scene instance;
     private ArrayList<Component> components = new ArrayList<>();
 
+    protected Scene() {
+        instance = this;
+    }
+
     public abstract ArrayList<Component> getComponents();
+    public static <T extends Component> T getComponent(Class<T> type) {
+        for (Component c : instance.components) {
+            if (c.getClass().equals(type))
+                return (T) c;
+        }
+        throw new NoSuchElementException("Component not found");
+    }
 
     @Override
     public void create() {
