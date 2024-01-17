@@ -11,10 +11,10 @@ public class Fonts {
 
     static {
         TITLE_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
-            size = 72;
+            size = 92;
         }});
         BUTTON_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
-            size = 18;
+            size = 24;
         }});
     }
 
