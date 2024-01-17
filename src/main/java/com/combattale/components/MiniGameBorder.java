@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.utils.Component;
 
-public class FirstMiniGameBorder extends Component {
+public class MiniGameBorder extends Component {
 
     private static final int WIDTH = 400;
     private static final int HEIGHT = 130;

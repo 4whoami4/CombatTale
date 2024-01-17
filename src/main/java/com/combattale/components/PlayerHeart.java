@@ -7,16 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.combattale.Game;
 import com.combattale.components.ui.Health;
 import com.combattale.scenes.FirstStageScene;
-import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Component;
 
 public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
-    private FirstMiniGameBorder border;
+    private MiniGameBorder border;
     private Health health;
 
     private Rectangle limits;
@@ -26,7 +24,7 @@ public class PlayerHeart extends Component {
     @Override
     public void create() {
         texture = new Texture("textures/Undertale.png");
-        border = FirstStageScene.getComponent(FirstMiniGameBorder.class);
+        border = FirstStageScene.getComponent(MiniGameBorder.class);
         health = FirstStageScene.getComponent(Health.class);
     }
 
@@ -64,7 +62,6 @@ public class PlayerHeart extends Component {
         }
         if (input.isKeyPressed(Keys.DOWN)) {
             heartY -= 300 * deltaTime;
-            health.decrease(1);
         }
 
         // Restrict the new position to stay within the border limits
