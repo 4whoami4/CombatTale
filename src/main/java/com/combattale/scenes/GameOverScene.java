@@ -33,7 +33,7 @@ public class GameOverScene extends Scene {
     }
 
     @Override
-    public ArrayList<Component> getComponents() {
+    public ArrayList<Component> build() {
         final ArrayList<Component> components = new ArrayList<>();
         components.add(
                 new Text("GameOver", Fonts.TITLE_FONT).withOffset(new Vector2(0, 20))

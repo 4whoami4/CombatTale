@@ -15,18 +15,30 @@ public abstract class Scene extends Component {
         instance = this;
     }
 
-    public abstract ArrayList<Component> getComponents();
+    public abstract ArrayList<Component> build();
+
+    public static <T extends Component> ArrayList<T> getComponents(Class<T> type) {
+        ArrayList<T> result = new ArrayList<>();
+        for (Component component : instance.components) {
+            if (type.isInstance(component)) {
+                result.add(type.cast(component));
+            }
+        }
+        return result;
+    }
+
     public static <T extends Component> T getComponent(Class<T> type) {
-        for (Component c : instance.components) {
-            if (c.getClass().equals(type))
-                return (T) c;
+        for (Component component : instance.components) {
+            if (type.isInstance(component)) {
+                return type.cast(component);
+            }
         }
         throw new NoSuchElementException("Component not found");
     }
 
     @Override
     public void create() {
-        components = getComponents();
+        components = build();
         components.forEach(Component::create);
     }
 

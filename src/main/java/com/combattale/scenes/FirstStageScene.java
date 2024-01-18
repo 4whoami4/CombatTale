@@ -1,15 +1,14 @@
 package com.combattale.scenes;
 
 import com.combattale.components.*;
-import com.combattale.components.ui.Health;
-import com.combattale.utils.Component;
-import com.combattale.utils.Scene;
+import com.combattale.components.ui.*;
+import com.combattale.utils.*;
 
 import java.util.ArrayList;
 
 public class FirstStageScene extends Scene {
     @Override
-    public ArrayList<Component> getComponents() {
+    public ArrayList<Component> build() {
         return new ArrayList<>() {{
             add(new BackgroundMusic());
             add(new MiniGameBorder());
