@@ -106,7 +106,7 @@ public class Button extends Text {
     private Vector2 getMousePosition() {
         return new Vector2(
                 Gdx.input.getX(),
-                screenSize.y - Gdx.input.getY()
+                Gdx.graphics.getHeight() - Gdx.input.getY()
         );
     }
 }
