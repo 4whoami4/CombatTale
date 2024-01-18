@@ -16,6 +16,7 @@ public class FirstStageScene extends Scene {
             add(new BossCharacter());
             add(new PlayerHeart());
             add(new Health());
+            add(new Dialog());
         }};
     }
 }

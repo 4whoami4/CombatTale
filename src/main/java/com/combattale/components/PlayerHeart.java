@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.components.ui.Dialog;
 import com.combattale.components.ui.Health;
 import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Component;
@@ -17,10 +18,12 @@ public class PlayerHeart extends Component {
     private MiniGameBorder border;
     private SafeZone safeZone;
     private Health health;
+    private Dialog dialog;
 
     private Rectangle limits;
     public Vector2 position;
     private Texture texture;
+    private boolean canMove = false;
 
     @Override
     public void create() {
@@ -28,6 +31,12 @@ public class PlayerHeart extends Component {
         border = FirstStageScene.getComponent(MiniGameBorder.class);
         safeZone = FirstStageScene.getComponent(SafeZone.class);
         health = FirstStageScene.getComponent(Health.class);
+        dialog = FirstStageScene.getComponent(Dialog.class);
+
+        runDelayed(() -> dialog.show(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                () -> runDelayed(() -> { dialog.hide(); canMove = true; }, 3f)
+        ), 1f);
     }
 
     @Override
@@ -35,11 +44,11 @@ public class PlayerHeart extends Component {
         if (position == null) return;
         spriteBatch.begin();
         spriteBatch.draw(
-            texture,
-            position.x,
-            position.y,
-            texture.getWidth() * SCALE,
-            texture.getHeight() * SCALE
+                texture,
+                position.x,
+                position.y,
+                texture.getWidth() * SCALE,
+                texture.getHeight() * SCALE
         );
         spriteBatch.end();
 
@@ -51,13 +60,11 @@ public class PlayerHeart extends Component {
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
         if (position == null) return;
-        movePlayer(input, deltaTime);
+        if (canMove) movePlayer(input, deltaTime);
     }
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-
         int playerHeartWidth = (int) (texture.getWidth() * SCALE);
         int playerHeartHeight = (int) (texture.getHeight() * SCALE);
 
