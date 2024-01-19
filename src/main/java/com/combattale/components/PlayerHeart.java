@@ -1,42 +1,20 @@
 package com.combattale.components;
 
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.combattale.components.ui.Dialog;
-import com.combattale.components.ui.Health;
-import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Component;
 
 public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
-    private MiniGameBorder border;
-    private SafeZone safeZone;
-    private Health health;
-    private Dialog dialog;
-
-    private Rectangle limits;
-    public Vector2 position;
     private Texture texture;
-    private boolean canMove = false;
+    private Vector2 position;
 
     @Override
     public void create() {
         texture = new Texture("textures/Undertale.png");
-        border = FirstStageScene.getComponent(MiniGameBorder.class);
-        safeZone = FirstStageScene.getComponent(SafeZone.class);
-        health = FirstStageScene.getComponent(Health.class);
-        dialog = FirstStageScene.getComponent(Dialog.class);
-
-        runDelayed(() -> dialog.show(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                () -> runDelayed(() -> { dialog.hide(); canMove = true; }, 3f)
-        ), 1f);
     }
 
     @Override
@@ -51,68 +29,18 @@ public class PlayerHeart extends Component {
                 texture.getHeight() * SCALE
         );
         spriteBatch.end();
-
-        if (!safeZone.isInZone(position)) {
-            health.decrease(1);
-        }
     }
 
-    @Override
-    public void keyboardEvent(Input input, float deltaTime) {
-        if (position == null) return;
-        if (canMove) movePlayer(input, deltaTime);
+    public void updatePosition(float x, float y) {
+        position = new Vector2(x, y);
     }
 
-    @Override
-    public void resize(int width, int height) {
-        int playerHeartWidth = (int) (texture.getWidth() * SCALE);
-        int playerHeartHeight = (int) (texture.getHeight() * SCALE);
-
-        int playerHeartPositionX = (width - playerHeartWidth) / 2; // Adjust the value as needed
-        int playerHeartPositionY = (height - playerHeartHeight) / 2 - 150; // Adjust the value as needed
-
-        position = new Vector2(playerHeartPositionX, playerHeartPositionY);
-        limits = border.getRect();
+    public int getWidth() {
+        return (int) (texture.getWidth() * SCALE);
     }
 
-    private void movePlayer(Input input, float deltaTime) {
-        // Get the current position of the player heart
-        float heartX = position.x;
-        float heartY = position.y;
-
-        // Calculate the new position based on user input
-        if (input.isKeyPressed(Keys.RIGHT)) {
-            heartX += 300 * deltaTime;
-        }
-        if (input.isKeyPressed(Keys.LEFT)) {
-            heartX -= 300 * deltaTime;
-        }
-        if (input.isKeyPressed(Keys.UP)) {
-            heartY += 300 * deltaTime;
-        }
-        if (input.isKeyPressed(Keys.DOWN)) {
-            heartY -= 300 * deltaTime;
-        }
-
-        // Restrict the new position to stay within the border limits
-        float minX = limits.x, maxX = minX + limits.width - texture.getWidth() * SCALE;
-        float minY = limits.y, maxY = minY + limits.height - texture.getHeight() * SCALE;
-
-        if (heartX < minX) {
-            heartX = minX;
-        } else if (heartX > maxX) {
-            heartX = maxX;
-        }
-
-        if (heartY < minY) {
-            heartY = minY;
-        } else if (heartY > maxY) {
-            heartY = maxY;
-        }
-
-        // Update the position of the player heart
-        position.x = heartX;
-        position.y = heartY;
+    public int getHeight() {
+        return (int) (texture.getHeight() * SCALE);
     }
 
     @Override

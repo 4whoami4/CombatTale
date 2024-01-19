@@ -8,11 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.combattale.utils.Fonts;
+import com.combattale.utils.Controller;
 import com.combattale.utils.GuiPosition;
 
 public class Button extends Text {
 
+    private final ButtonController controller;
     private Vector2 padding = Vector2.Zero;
     private Color color = Color.BLUE, hoverColor = Color.RED;
     private Color textColor = Color.WHITE, textHoverColor = Color.WHITE;
@@ -21,6 +22,7 @@ public class Button extends Text {
 
     public Button(String text, BitmapFont font) {
         super(text, font);
+        controller = new ButtonController();
     }
 
     public Button withPadding(Vector2 padding) {
@@ -67,6 +69,7 @@ public class Button extends Text {
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        controller.keyboardEvent(Gdx.input, Gdx.graphics.getDeltaTime());
         final Vector2 pos = calcPosition(position, layout.width, layout.height);
         final Rectangle rect = new Rectangle(
                 pos.x - padding.x + offset.x,
@@ -96,17 +99,19 @@ public class Button extends Text {
         spriteBatch.end();
     }
 
-    @Override
-    public void keyboardEvent(Input input, float deltaTime) {
-        if (onClick != null && isHovered && input.isButtonJustPressed(Input.Buttons.LEFT)) {
-            onClick.run();
-        }
-    }
-
     private Vector2 getMousePosition() {
         return new Vector2(
                 Gdx.input.getX(),
                 Gdx.graphics.getHeight() - Gdx.input.getY()
         );
+    }
+
+    private class ButtonController extends Controller {
+        @Override
+        public void keyboardEvent(Input input, float deltaTime) {
+            if (onClick != null && isHovered && input.isButtonJustPressed(Input.Buttons.LEFT)) {
+                onClick.run();
+            }
+        }
     }
 }

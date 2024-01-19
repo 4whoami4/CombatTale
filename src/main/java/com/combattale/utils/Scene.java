@@ -67,8 +67,11 @@ public abstract class Scene extends Component {
         components.forEach(Component::dispose);
     }
 
-    @Override
     public void keyboardEvent(Input input, float deltaTime) {
-        components.forEach((e) -> e.keyboardEvent(input, deltaTime));
+        components.forEach((e) -> {
+            if (e instanceof Controller) {
+                ((Controller) e).keyboardEvent(input, deltaTime);
+            }
+        });
     }
 }
