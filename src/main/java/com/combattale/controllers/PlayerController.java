@@ -16,14 +16,14 @@ public class PlayerController extends Controller {
     private SafeZone safeZone;
     private Health health;
 
-    private Rectangle limits;
     public Vector2 position;
-
-    private boolean canMove = false;
+    private Rectangle limits;
+    public boolean canMove = false;
 
     @Override
     public void create() {
         playerHeart = FirstStageScene.getComponent(PlayerHeart.class);
+        border = FirstStageScene.getComponent(MiniGameBorder.class);
         safeZone = FirstStageScene.getComponent(SafeZone.class);
         health = FirstStageScene.getComponent(Health.class);
     }

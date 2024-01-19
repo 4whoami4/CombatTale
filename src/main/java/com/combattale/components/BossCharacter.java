@@ -19,11 +19,8 @@ public class BossCharacter extends Component {
 
     @Override
     public void resize(int width, int height) {
-        int bossCharacterWidth = (int) (texture.getWidth() * SCALE);
-        int bossCharacterHeight = (int) (texture.getHeight() * SCALE);
-
-        int bossCharacterX = (width - bossCharacterWidth) / 2; // Adjust the value as needed
-        int bossCharacterY = (height - bossCharacterHeight) / 2 + 80;
+        int bossCharacterX = (width - getWidth()) / 2;
+        int bossCharacterY = (height - getHeight()) / 2 + 80;
 
         position = new Vector2(bossCharacterX, bossCharacterY);
     }
@@ -42,8 +39,32 @@ public class BossCharacter extends Component {
         spriteBatch.end();
     }
 
+    public int getWidth() {
+        return (int) (texture.getWidth() * SCALE);
+    }
+
+    public int getHeight() {
+        return (int) (texture.getHeight() * SCALE);
+    }
+
+    public void setState(BossState state) {
+        switch (state) {
+            case DEAD -> texture = new Texture("textures/BOSS1DEAD.png");
+            case FIGHTING -> texture = new Texture("textures/BOSS1FIGHT.png");
+            case STANDING -> texture = new Texture("textures/BOSS1STANDING.png");
+            case TALKING -> texture = new Texture("textures/BOSS1TALKING.png");
+        }
+    }
+
     @Override
     public void dispose() {
         texture.dispose();
+    }
+
+    public enum BossState {
+        DEAD,
+        FIGHTING,
+        STANDING,
+        TALKING
     }
 }
