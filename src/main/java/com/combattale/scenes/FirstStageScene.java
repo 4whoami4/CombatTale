@@ -19,6 +19,7 @@ public class FirstStageScene extends Scene {
             add(new PlayerHeart());
             add(new PlayerController());
             add(new Health());
+            add(new Score());
             add(new Dialog());
         }};
     }
