@@ -15,7 +15,7 @@ public class SafeZone extends Component {
     private static final boolean SHOW = true;
 
     private static final TimedList<Rectangle> sizes = new TimedList<>() {{
-        add(4f, new Rectangle(0, 0, WIDTH, HEIGHT));
+        add(0f, new Rectangle(0, 0, WIDTH, HEIGHT));
         add(6f, new Rectangle(0, 0, WIDTH, 50));
         add(8f, new Rectangle(0, HEIGHT - 50, WIDTH, 50));
         add(10f, new Rectangle(0, 0, WIDTH, HEIGHT));
