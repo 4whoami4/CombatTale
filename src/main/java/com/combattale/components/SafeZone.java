@@ -72,4 +72,8 @@ public class SafeZone extends Component {
     public boolean isInZone(Vector2 position) {
         return rectangle.contains(position);
     }
+
+    public void reset() {
+        currentTime = 0;
+    }
 }

@@ -2,6 +2,7 @@ package com.combattale.controllers;
 
 import com.combattale.Game;
 import com.combattale.components.BossCharacter;
+import com.combattale.components.FlyingTarget;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Dialog;
 import com.combattale.scenes.FirstStageScene;
@@ -12,9 +13,11 @@ public class BossController extends Controller {
 
     private PlayerController playerController;
     private BossCharacter bossCharacter;
+    private FlyingTarget flyingTarget;
     private SafeZone safeZone;
     private Dialog dialog;
     private double time = 0;
+    private float health = 100;
     private int state = 0;
 
     @Override
@@ -22,6 +25,7 @@ public class BossController extends Controller {
         final Scene currentScene = Game.instance.getActiveScene();
         playerController = currentScene.getComponent(PlayerController.class);
         bossCharacter = currentScene.getComponent(BossCharacter.class);
+        flyingTarget = currentScene.getComponent(FlyingTarget.class);
         safeZone = currentScene.getComponent(SafeZone.class);
         dialog = currentScene.getComponent(Dialog.class);
     }
@@ -49,5 +53,20 @@ public class BossController extends Controller {
             playerController.canMove = true;
             bossCharacter.setState(BossCharacter.BossState.STANDING);
         }
+        if (time > 20f) {
+            time = 0;
+            flyingTarget.isVisible = true;
+            flyingTarget.isPaused = false;
+        }
+    }
+
+    public void dealDamage(float damage) {
+        health -= damage;
+        if (health > 0f) return;
+
+        health = 0f;
+        bossCharacter.setState(BossCharacter.BossState.DEAD);
+        safeZone.isPaused = true;
+        safeZone.reset();
     }
 }

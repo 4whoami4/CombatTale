@@ -14,6 +14,8 @@ public class FirstStageScene extends Scene {
             add(new BackgroundMusic());
             add(new MiniGameBorder());
             add(new SafeZone());
+            add(new FlyingTarget());
+            add(new FlyingTargetController());
             add(new BossCharacter());
             add(new BossController());
             add(new PlayerHeart());
