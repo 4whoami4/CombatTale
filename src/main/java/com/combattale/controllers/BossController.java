@@ -1,9 +1,11 @@
 package com.combattale.controllers;
 
+import com.combattale.Game;
 import com.combattale.components.BossCharacter;
 import com.combattale.components.ui.Dialog;
 import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Controller;
+import com.combattale.utils.Scene;
 
 public class BossController extends Controller {
 
@@ -15,9 +17,10 @@ public class BossController extends Controller {
 
     @Override
     public void create() {
-        playerController = FirstStageScene.getComponent(PlayerController.class);
-        bossCharacter = FirstStageScene.getComponent(BossCharacter.class);
-        dialog = FirstStageScene.getComponent(Dialog.class);
+        final Scene currentScene = Game.instance.getActiveScene();
+        playerController = currentScene.getComponent(PlayerController.class);
+        bossCharacter = currentScene.getComponent(BossCharacter.class);
+        dialog = currentScene.getComponent(Dialog.class);
     }
 
     @Override

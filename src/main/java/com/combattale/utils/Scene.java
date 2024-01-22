@@ -8,18 +8,13 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public abstract class Scene extends Component {
-    private static Scene instance;
     private ArrayList<Component> components = new ArrayList<>();
-
-    protected Scene() {
-        instance = this;
-    }
 
     public abstract ArrayList<Component> build();
 
-    public static <T extends Component> ArrayList<T> getComponents(Class<T> type) {
+    public <T extends Component> ArrayList<T> getComponents(Class<T> type) {
         ArrayList<T> result = new ArrayList<>();
-        for (Component component : instance.components) {
+        for (Component component : components) {
             if (type.isInstance(component)) {
                 result.add(type.cast(component));
             }
@@ -27,8 +22,8 @@ public abstract class Scene extends Component {
         return result;
     }
 
-    public static <T extends Component> T getComponent(Class<T> type) {
-        for (Component component : instance.components) {
+    public <T extends Component> T getComponent(Class<T> type) {
+        for (Component component : components) {
             if (type.isInstance(component)) {
                 return type.cast(component);
             }

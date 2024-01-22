@@ -3,12 +3,14 @@ package com.combattale.controllers;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.Game;
 import com.combattale.components.MiniGameBorder;
 import com.combattale.components.PlayerHeart;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Health;
 import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Controller;
+import com.combattale.utils.Scene;
 
 public class PlayerController extends Controller {
     private PlayerHeart playerHeart;
@@ -22,10 +24,11 @@ public class PlayerController extends Controller {
 
     @Override
     public void create() {
-        playerHeart = FirstStageScene.getComponent(PlayerHeart.class);
-        border = FirstStageScene.getComponent(MiniGameBorder.class);
-        safeZone = FirstStageScene.getComponent(SafeZone.class);
-        health = FirstStageScene.getComponent(Health.class);
+        final Scene currentScene = Game.instance.getActiveScene();
+        playerHeart = currentScene.getComponent(PlayerHeart.class);
+        border = currentScene.getComponent(MiniGameBorder.class);
+        safeZone = currentScene.getComponent(SafeZone.class);
+        health = currentScene.getComponent(Health.class);
     }
 
     @Override
