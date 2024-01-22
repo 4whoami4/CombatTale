@@ -18,7 +18,7 @@ public class PlayerController extends Controller {
     private SafeZone safeZone;
     private Health health;
 
-    public Vector2 position;
+    private Vector2 position;
     private Rectangle limits;
     public boolean canMove = false;
 
@@ -87,6 +87,7 @@ public class PlayerController extends Controller {
             heartY = maxY;
         }
 
+        position = new Vector2(heartX, heartY);
         playerHeart.updatePosition(heartX, heartY);
     }
 }
