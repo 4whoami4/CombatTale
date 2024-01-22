@@ -24,12 +24,15 @@ public class SafeZone extends Component {
     private Vector2 position;
     private Rectangle rectangle;
     private double currentTime = 0;
+    public boolean isPaused = true;
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         int borderThickness = 2;
 
-        currentTime += Gdx.graphics.getDeltaTime();
+        if (!isPaused)
+            currentTime += Gdx.graphics.getDeltaTime();
+
         Rectangle size = sizes.get(currentTime);
         rectangle = new Rectangle(
                 position.x + size.x,

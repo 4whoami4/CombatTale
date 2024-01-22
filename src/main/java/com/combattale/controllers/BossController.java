@@ -2,6 +2,7 @@ package com.combattale.controllers;
 
 import com.combattale.Game;
 import com.combattale.components.BossCharacter;
+import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Dialog;
 import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Controller;
@@ -11,6 +12,7 @@ public class BossController extends Controller {
 
     private PlayerController playerController;
     private BossCharacter bossCharacter;
+    private SafeZone safeZone;
     private Dialog dialog;
     private double time = 0;
     private int state = 0;
@@ -20,6 +22,7 @@ public class BossController extends Controller {
         final Scene currentScene = Game.instance.getActiveScene();
         playerController = currentScene.getComponent(PlayerController.class);
         bossCharacter = currentScene.getComponent(BossCharacter.class);
+        safeZone = currentScene.getComponent(SafeZone.class);
         dialog = currentScene.getComponent(Dialog.class);
     }
 
@@ -42,6 +45,7 @@ public class BossController extends Controller {
         if (state == 2) {
             state++;
             dialog.hide();
+            safeZone.isPaused = false;
             playerController.canMove = true;
             bossCharacter.setState(BossCharacter.BossState.STANDING);
         }
