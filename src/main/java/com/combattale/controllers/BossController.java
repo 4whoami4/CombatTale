@@ -35,7 +35,7 @@ public class BossController extends Controller {
         time += deltaTime;
         if (time > 1 && state == 0) {
             state++;
-            bossCharacter.setState(BossCharacter.BossState.FIGHTING);
+            bossCharacter.setState(BossCharacter.BossState.STANDING);
             dialog.show(
                     "Banished to a shadow realm for sins you've never committed, " +
                             "you find yourself in 'Combat Tale,' a world where you need to " +
@@ -51,7 +51,7 @@ public class BossController extends Controller {
             dialog.hide();
             safeZone.isPaused = false;
             playerController.canMove = true;
-            bossCharacter.setState(BossCharacter.BossState.STANDING);
+            bossCharacter.setState(BossCharacter.BossState.FIGHTING);
         }
         if (time > 20f) {
             time = 0;
