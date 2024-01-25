@@ -16,9 +16,10 @@ public class SafeZone extends Component {
 
     private static final TimedList<Rectangle> sizes = new TimedList<>() {{
         add(0f, new Rectangle(0, 0, WIDTH, HEIGHT));
-        add(6f, new Rectangle(0, 0, WIDTH, 50));
-        add(8f, new Rectangle(0, HEIGHT - 50, WIDTH, 50));
-        add(10f, new Rectangle(0, 0, WIDTH, HEIGHT));
+        add(4f, new Rectangle(0, 0, WIDTH, 70));
+        add(7f, new Rectangle(0, HEIGHT - 70, WIDTH, 70));
+        add(10f, new Rectangle(0, 0, WIDTH, 70));
+        add(13f, new Rectangle(0, HEIGHT - 70, WIDTH, 70));
     }};
 
     private Vector2 position;
@@ -28,7 +29,7 @@ public class SafeZone extends Component {
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        int borderThickness = 2;
+        int borderThickness = 4;
 
         if (!isPaused)
             currentTime += Gdx.graphics.getDeltaTime();
@@ -46,17 +47,20 @@ public class SafeZone extends Component {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.rect(
-                rectangle.x,
-                rectangle.y,
-                rectangle.width,
-                rectangle.height
+                rectangle.x, rectangle.y,
+                rectangle.width, borderThickness
         );
-        shapeRenderer.setColor(Color.BLACK);
         shapeRenderer.rect(
-                rectangle.x + borderThickness,
-                rectangle.y + borderThickness,
-                rectangle.width - borderThickness * 2,
-                rectangle.height - borderThickness * 2
+                rectangle.x, rectangle.y + rectangle.height - borderThickness,
+                rectangle.width, borderThickness
+        );
+        shapeRenderer.rect(
+                rectangle.x, rectangle.y,
+                borderThickness, rectangle.height
+        );
+        shapeRenderer.rect(
+                rectangle.x + rectangle.width - borderThickness, rectangle.y,
+                borderThickness, rectangle.height
         );
         shapeRenderer.end();
     }
