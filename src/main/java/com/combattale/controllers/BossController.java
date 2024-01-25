@@ -7,7 +7,6 @@ import com.combattale.components.FlyingTarget;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Dialog;
 import com.combattale.components.ui.HitText;
-import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Controller;
 import com.combattale.utils.Scene;
 
@@ -38,34 +37,35 @@ public class BossController extends Controller {
     public void update(float deltaTime) {
         time += deltaTime;
         if (time > 1 && state == 0) {
-            state++;
             bossCharacter.setState(BossCharacter.BossState.STANDING);
             dialog.show(
                     "Banished to a shadow realm for sins you've never committed, " +
-//                            "you find yourself in 'Combat Tale,' a world where you need to " +
-//                            "fight for your innocence. Defeat monsters in combat or remain " +
-//                            "trapped in this dark reality forever. Will you reclaim your " +
-//                            "innocence and return to the world you once knew, or will your " +
+                            "you find yourself in 'Combat Tale,' a world where you need to " +
+                            "fight for your innocence. Defeat monsters in combat or remain " +
+                            "trapped in this dark reality forever. Will you reclaim your " +
+                            "innocence and return to the world you once knew, or will your " +
                             "heart be forever bound to this realm of shadows?",
-                    () -> state++
+                    this::nextState
             );
+            nextState();
         }
         if (state == 2) {
-            state++;
             dialog.hide();
             safeZone.isPaused = false;
             playerController.canMove = true;
             bossCharacter.setState(BossCharacter.BossState.FIGHTING);
+            nextState();
         }
-        if (time > 20f) {
-            time = 0;
-            flyingTarget.reset();
+        if (state == 3) {
+            if (time > 5f) {
+                time = 0;
+                flyingTarget.reset();
+            }
         }
     }
 
     public void dealDamage(float damage) {
         health -= damage;
-        System.out.println(damage);
         if (damage < 10) {
             hitText.show("MISS");
         } else if (damage < 25) {
@@ -88,5 +88,14 @@ public class BossController extends Controller {
         if (state == 1 && input.isKeyPressed(Input.Keys.SPACE)) {
             state = 2;
         }
+    }
+
+    private void setState(int state) {
+        this.time = 0;
+        this.state = state;
+    }
+
+    private void nextState() {
+        setState(state + 1);
     }
 }

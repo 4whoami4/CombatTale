@@ -8,7 +8,6 @@ import com.combattale.components.MiniGameBorder;
 import com.combattale.components.PlayerHeart;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Health;
-import com.combattale.scenes.FirstStageScene;
 import com.combattale.utils.Controller;
 import com.combattale.utils.Scene;
 

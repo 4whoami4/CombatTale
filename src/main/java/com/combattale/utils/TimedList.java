@@ -7,9 +7,9 @@ public class TimedList<T> {
     private final List<Double> stops = new ArrayList<>();
     private final List<T> elements = new ArrayList<>();
 
-    public boolean add(double startTime, T element) {
+    public void add(double startTime, T element) {
         stops.add(startTime);
-        return elements.add(element);
+        elements.add(element);
     }
 
     public T get(double time) {
