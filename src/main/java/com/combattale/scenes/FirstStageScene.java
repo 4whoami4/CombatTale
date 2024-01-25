@@ -23,6 +23,7 @@ public class FirstStageScene extends Scene {
             add(new Health());
             add(new Score());
             add(new Dialog());
+            add(new HitText());
         }};
     }
 }
