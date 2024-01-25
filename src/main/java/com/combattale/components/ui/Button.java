@@ -15,8 +15,8 @@ public class Button extends Text {
 
     private final ButtonController controller;
     private Vector2 padding = Vector2.Zero;
-    private Color color = Color.BLUE, hoverColor = Color.RED;
-    private Color textColor = Color.WHITE, textHoverColor = Color.WHITE;
+    private Color color = Color.BLACK, hoverColor = Color.BLACK;
+    private Color textColor = Color.WHITE, textHoverColor = Color.GREEN;
     private boolean isHovered = false;
     private Runnable onClick;
 

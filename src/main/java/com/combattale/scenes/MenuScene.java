@@ -1,6 +1,5 @@
 package com.combattale.scenes;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.Game;
 import com.combattale.components.ui.Button;
@@ -8,7 +7,6 @@ import com.combattale.components.ui.FpsCounter;
 import com.combattale.components.ui.Text;
 import com.combattale.utils.Component;
 import com.combattale.utils.Fonts;
-
 import com.combattale.utils.Scene;
 
 import java.util.ArrayList;
@@ -31,10 +29,6 @@ public class MenuScene extends Scene {
         return new Button(text, Fonts.BUTTON_FONT)
                 .withOnClick(onClickAction)
                 .withPadding(new Vector2(10, 10))
-                .withTextColor(Color.WHITE)
-                .withTextHoverColor(Color.GREEN)
-                .withColor(Color.BLACK)
-                .withHoverColor(Color.BLACK)
                 .withOffset(offset);
     }
 
