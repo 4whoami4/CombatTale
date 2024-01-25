@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.scenes.MenuScene;
 import com.combattale.utils.Difficulty;
 import com.combattale.utils.Scene;
+import com.combattale.utils.Storage;
 
 public class Game extends ApplicationAdapter {
     public static Game instance;
@@ -31,6 +32,13 @@ public class Game extends ApplicationAdapter {
 
     @Override
     public void create() {
+        masterVolume = (float) Storage.getDouble("volume", 1);
+        difficulty = switch (Storage.getInt("difficulty", 1)) {
+            case 0 -> Difficulty.EASY;
+            case 2 -> Difficulty.HARD;
+            default -> Difficulty.NORMAL;
+        };
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
         spriteBatch = new SpriteBatch();

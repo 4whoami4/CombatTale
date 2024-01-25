@@ -6,6 +6,7 @@ import com.combattale.components.ui.*;
 import com.combattale.utils.Component;
 import com.combattale.utils.Fonts;
 import com.combattale.utils.Scene;
+import com.combattale.utils.Storage;
 
 import java.util.ArrayList;
 
@@ -23,9 +24,14 @@ public class OptionsScene extends Scene {
                     new Button("Back", Fonts.BODY_FONT)
                             .withPadding(new Vector2(10, 10))
                             .withOffset(new Vector2(0, -70))
-                            .withOnClick(() -> Game.instance.setScene(new MenuScene()))
+                            .withOnClick(() -> goBack())
             );
             add(new FpsCounter());
         }};
+    }
+
+    private void goBack() {
+        Storage.commit();
+        Game.instance.setScene(new MenuScene());
     }
 }

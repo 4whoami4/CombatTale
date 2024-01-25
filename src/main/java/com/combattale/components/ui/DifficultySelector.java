@@ -5,10 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.Game;
-import com.combattale.utils.Component;
-import com.combattale.utils.Difficulty;
-import com.combattale.utils.Fonts;
-import com.combattale.utils.GuiComponent;
+import com.combattale.utils.*;
 
 import java.util.ArrayList;
 
@@ -54,8 +51,17 @@ public class DifficultySelector extends GuiComponent {
 
     private Button createButton(String text, int i, Difficulty difficulty) {
         return new Button(text, Fonts.BODY_FONT)
-                .withOnClick(() -> Game.instance.difficulty = difficulty)
+                .withOnClick(() -> setDifficulty(difficulty))
                 .withOffset(new Vector2(i * 150, 80))
                 .withPadding(new Vector2(10, 10));
+    }
+
+    private void setDifficulty(Difficulty difficulty) {
+        Storage.setInt("difficulty", switch (difficulty) {
+            case EASY -> 0;
+            case NORMAL -> 1;
+            case HARD -> 2;
+        });
+        Game.instance.difficulty = difficulty;
     }
 }

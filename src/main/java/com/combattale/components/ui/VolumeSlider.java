@@ -8,6 +8,7 @@ import com.combattale.Game;
 import com.combattale.utils.Fonts;
 import com.combattale.utils.GuiComponent;
 import com.combattale.utils.GuiPosition;
+import com.combattale.utils.Storage;
 
 public class VolumeSlider extends GuiComponent {
     private final Text title = new Text("Volume", Fonts.SUBTITLE_FONT)
@@ -62,11 +63,13 @@ public class VolumeSlider extends GuiComponent {
         float volume = Game.instance.masterVolume;
         volume = Math.clamp(volume + 0.05f, 0, 1);
         Game.instance.masterVolume = volume;
+        Storage.setDouble("volume", volume);
     }
 
     private void decreaseVolume() {
         float volume = Game.instance.masterVolume;
         volume = Math.clamp(volume - 0.05f, 0, 1);
         Game.instance.masterVolume = volume;
+        Storage.setDouble("volume", volume);
     }
 }
