@@ -49,8 +49,8 @@ public class Storage {
     @SuppressWarnings("unchecked")
     public static <K, V> Map<K, V> getMap(String key) {
         Object obj = data.opt(key);
-        if (obj instanceof Map)
-            return (Map<K, V>) obj;
+        if (obj instanceof JSONObject)
+            return (Map<K, V>) ((JSONObject) obj).toMap();
         return Collections.emptyMap();
     }
 
