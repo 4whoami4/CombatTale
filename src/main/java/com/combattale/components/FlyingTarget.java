@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.combattale.Game;
 import com.combattale.utils.Component;
+import com.combattale.utils.Difficulty;
 import com.combattale.utils.Scene;
 
 public class FlyingTarget extends Component {
@@ -27,7 +28,7 @@ public class FlyingTarget extends Component {
         if (!isVisible) return;
 
         if (!isPaused) {
-            position -= Gdx.graphics.getDeltaTime() * 0.7f;
+            position -= Gdx.graphics.getDeltaTime() * getSpeed();
             if (position <= 0) position = 1;
         } else {
             size += Gdx.graphics.getDeltaTime() * 8f;
@@ -55,12 +56,21 @@ public class FlyingTarget extends Component {
 
     public double getDamageMultiplier() {
         final double pos = Math.clamp(1 - Math.abs(position - 0.5) * 2, 0, 1);
+        final boolean isEasy = Game.instance.difficulty == Difficulty.EASY;
         if (pos < .85)
             return 0;
         else if (pos < .94)
-            return 0.2;
+            return isEasy ? 0.3 : 0.2;
         else if (pos < .97)
-            return 0.5;
-        return 1;
+            return isEasy ? 0.6 : 0.5;
+        return isEasy ? 1.1 : 1;
+    }
+
+    private float getSpeed() {
+        return switch (Game.instance.difficulty) {
+            case Difficulty.EASY -> 0.5f;
+            case Difficulty.NORMAL -> 0.7f;
+            case Difficulty.HARD -> 1f;
+        };
     }
 }

@@ -8,10 +8,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.combattale.scenes.MenuScene;
+import com.combattale.utils.Difficulty;
 import com.combattale.utils.Scene;
 
 public class Game extends ApplicationAdapter {
     public static Game instance;
+
+    public float masterVolume = 1f;
+    public Difficulty difficulty = Difficulty.NORMAL;
 
     private SpriteBatch spriteBatch;
     private ShapeRenderer shapeRenderer;

@@ -2,6 +2,7 @@ package com.combattale.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.combattale.Game;
 import com.combattale.utils.Component;
 
 public class BackgroundMusic extends Component {
@@ -10,7 +11,7 @@ public class BackgroundMusic extends Component {
     @Override
     public void create() {
         backgroundThemeSong = Gdx.audio.newSound(Gdx.files.internal("Sounds/megalovania.mp3"));
-        backgroundThemeSong.loop();
+        backgroundThemeSong.loop(Game.instance.masterVolume);
     }
 
     @Override

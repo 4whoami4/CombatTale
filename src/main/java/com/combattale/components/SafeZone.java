@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.combattale.Game;
 import com.combattale.utils.Component;
+import com.combattale.utils.Difficulty;
 import com.combattale.utils.TimedList;
 
 public class SafeZone extends Component {
@@ -32,7 +34,7 @@ public class SafeZone extends Component {
         int borderThickness = 4;
 
         if (!isPaused)
-            currentTime += Gdx.graphics.getDeltaTime();
+            currentTime += Gdx.graphics.getDeltaTime() * getSpeed();
 
         Rectangle size = sizes.get(currentTime);
         rectangle = new Rectangle(
@@ -79,5 +81,13 @@ public class SafeZone extends Component {
 
     public void reset() {
         currentTime = 0;
+    }
+
+    private double getSpeed() {
+        return switch (Game.instance.difficulty) {
+            case Difficulty.EASY -> 0.8;
+            case Difficulty.NORMAL -> 1;
+            case Difficulty.HARD -> 1.5;
+        };
     }
 }
