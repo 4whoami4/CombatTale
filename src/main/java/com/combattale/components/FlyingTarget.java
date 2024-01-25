@@ -1,7 +1,6 @@
 package com.combattale.components;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -47,7 +46,21 @@ public class FlyingTarget extends Component {
         shapeRenderer.end();
     }
 
+    public void reset() {
+        isVisible = true;
+        isPaused = false;
+        position = 1;
+        size = 0;
+    }
+
     public double getDamageMultiplier() {
-        return Math.clamp(1 - Math.abs(position - 0.5) * 2, 0, 1);
+        final double pos = Math.clamp(1 - Math.abs(position - 0.5) * 2, 0, 1);
+        if (pos < .85)
+            return 0;
+        else if (pos < .94)
+            return 0.2;
+        else if (pos < .97)
+            return 0.5;
+        return 1;
     }
 }

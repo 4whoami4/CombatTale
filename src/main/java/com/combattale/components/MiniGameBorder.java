@@ -1,6 +1,7 @@
 package com.combattale.components;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -13,6 +14,13 @@ public class MiniGameBorder extends Component {
     private static final int HEIGHT = 130;
 
     private Vector2 position;
+    private Texture texture;
+
+    @Override
+    public void create() {
+        texture = new Texture("textures/hitBoard.png");
+    }
+
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
@@ -34,6 +42,16 @@ public class MiniGameBorder extends Component {
                 HEIGHT - borderThickness * 2
         );
         shapeRenderer.end();
+
+        spriteBatch.begin();
+        spriteBatch.draw(
+                texture,
+                position.x + borderThickness,
+                position.y + borderThickness,
+                WIDTH - borderThickness * 2,
+                HEIGHT - borderThickness * 2
+        );
+        spriteBatch.end();
     }
 
     @Override

@@ -33,7 +33,7 @@ public class Game extends ApplicationAdapter {
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        setScene(new MenuScene());
+        setScene(new FirstStageScene());
     }
 
     @Override
