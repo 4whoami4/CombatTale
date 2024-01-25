@@ -52,7 +52,7 @@ public class Dialog extends GuiComponent {
         shapeRenderer.end();
 
         spriteBatch.begin();
-        Fonts.BUTTON_FONT.draw(
+        Fonts.BODY_FONT.draw(
                 spriteBatch, txt,
                 pos.x + 16, pos.y + HEIGHT - 20,
                 WIDTH - 32, Align.left, true

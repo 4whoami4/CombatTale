@@ -11,7 +11,7 @@ import com.combattale.utils.GuiPosition;
 
 public class Score extends GuiComponent {
     private final GlyphLayout layout = new GlyphLayout();
-    private final BitmapFont font = Fonts.BUTTON_FONT;
+    private final BitmapFont font = Fonts.BODY_FONT;
     private int score = 100;
 
     @Override

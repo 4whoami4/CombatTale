@@ -26,7 +26,7 @@ public class MenuScene extends Scene {
     }};
 
     private Button createButton(String text, Vector2 offset, Runnable onClickAction) {
-        return new Button(text, Fonts.BUTTON_FONT)
+        return new Button(text, Fonts.BODY_FONT)
                 .withOnClick(onClickAction)
                 .withPadding(new Vector2(10, 10))
                 .withOffset(offset);

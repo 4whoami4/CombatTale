@@ -9,7 +9,7 @@ import com.combattale.utils.GuiPosition;
 
 public class FpsCounter extends Text {
     public FpsCounter() {
-        super("", Fonts.BUTTON_FONT);
+        super("", Fonts.BODY_FONT);
         withPosition(GuiPosition.LEFT_TOP);
         withOffset(new Vector2(10, -10));
     }
