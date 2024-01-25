@@ -24,6 +24,7 @@ public class FirstStageScene extends Scene {
             add(new Score());
             add(new Dialog());
             add(new HitText());
+            add(new FpsCounter());
         }};
     }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.combattale.Game;
 import com.combattale.components.ui.Button;
+import com.combattale.components.ui.FpsCounter;
 import com.combattale.components.ui.Text;
 import com.combattale.utils.Component;
 import com.combattale.utils.Fonts;
@@ -39,10 +40,10 @@ public class MenuScene extends Scene {
 
     @Override
     public ArrayList<Component> build() {
-        final ArrayList<Component> components = new ArrayList<>();
-        components.add(
-                new Text("Combat Tale", Fonts.TITLE_FONT).withOffset(new Vector2(0, 210))
-        );
+        final ArrayList<Component> components = new ArrayList<>() {{
+            add(new Text("Combat Tale", Fonts.TITLE_FONT).withOffset(new Vector2(0, 210)));
+            add(new FpsCounter());
+        }};
         for (int i = 0; i < buttonTexts.size(); i++) {
             components.add(
                     createButton(buttonTexts.get(3 - i), new Vector2(0, i * 60 - 180), buttonActions.get(3 - i))
