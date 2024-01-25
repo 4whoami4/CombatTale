@@ -7,11 +7,16 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.*;
 
 public class Fonts {
-    public static final BitmapFont TITLE_FONT, HIT_FONT, BODY_FONT;
+    public static final BitmapFont TITLE_FONT, SUBTITLE_FONT, HIT_FONT, BODY_FONT;
 
     static {
         TITLE_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
             size = 92;
+        }});
+        SUBTITLE_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
+            size = 26;
+            borderColor = Color.WHITE;
+            borderWidth = 0.5f;
         }});
         HIT_FONT = createFont("DeterminationSansWebRegular-369X", new FreeTypeFontParameter() {{
             size = 86;
