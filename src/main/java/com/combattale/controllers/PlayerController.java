@@ -8,6 +8,7 @@ import com.combattale.components.MiniGameBorder;
 import com.combattale.components.PlayerHeart;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Health;
+import com.combattale.components.ui.Score;
 import com.combattale.utils.Controller;
 import com.combattale.utils.Scene;
 
@@ -16,10 +17,12 @@ public class PlayerController extends Controller {
     private MiniGameBorder border;
     private SafeZone safeZone;
     private Health health;
+    private Score score;
 
     private Vector2 position;
     private Rectangle limits;
     public boolean canMove = false;
+    private float time = 0;
 
     @Override
     public void create() {
@@ -28,12 +31,17 @@ public class PlayerController extends Controller {
         border = currentScene.getComponent(MiniGameBorder.class);
         safeZone = currentScene.getComponent(SafeZone.class);
         health = currentScene.getComponent(Health.class);
+        score = currentScene.getComponent(Score.class);
     }
 
     @Override
     public void update(float deltaTime) {
         if (!safeZone.isInZone(position) && canMove) {
             health.decrease(1);
+        }
+        if (canMove) {
+            time += deltaTime;
+            score.setScore(time);
         }
     }
 

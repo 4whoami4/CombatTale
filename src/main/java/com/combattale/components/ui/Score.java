@@ -12,7 +12,7 @@ import com.combattale.utils.GuiPosition;
 public class Score extends GuiComponent {
     private final GlyphLayout layout = new GlyphLayout();
     private final BitmapFont font = Fonts.BODY_FONT;
-    private int score = 100;
+    private int score = 1000;
 
     @Override
     public void create() {
@@ -22,7 +22,7 @@ public class Score extends GuiComponent {
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         Vector2 pos = calcPosition(GuiPosition.RIGHT_BOTTOM, 160, layout.height);
-        float fill = 128 * score / 100f;
+        float fill = 128 * score / 1000f;
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1);
@@ -37,8 +37,12 @@ public class Score extends GuiComponent {
         spriteBatch.end();
     }
 
-    public void increase(int amount) {
-        score += amount;
+    public void setScore(float time) {
+        score = 1000 - (int) Math.floor(time);
         layout.setText(font, String.valueOf(score));
+    }
+
+    public int getScore() {
+        return score;
     }
 }
