@@ -20,7 +20,7 @@ public class MenuScene extends Scene {
     }};
     private final ArrayList<Runnable> buttonActions = new ArrayList<>() {{
         add(() -> Game.instance.setScene(new FirstStageScene()));
-        add(() -> System.out.println("Options clicked"));
+        add(() -> Game.instance.setScene(new OptionsScene()));
         add(() -> System.out.println("Leaderboard clicked"));
         add(() -> System.exit(0));
     }};
