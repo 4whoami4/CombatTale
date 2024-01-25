@@ -7,6 +7,8 @@ import com.combattale.components.FlyingTarget;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Dialog;
 import com.combattale.components.ui.HitText;
+import com.combattale.components.ui.Score;
+import com.combattale.scenes.VictoryScreen;
 import com.combattale.utils.Controller;
 import com.combattale.utils.Scene;
 
@@ -18,6 +20,7 @@ public class BossController extends Controller {
     private SafeZone safeZone;
     private HitText hitText;
     private Dialog dialog;
+    private Score score;
     private double time = 0;
     private float health = 100;
     private int state = 0;
@@ -31,6 +34,7 @@ public class BossController extends Controller {
         safeZone = currentScene.getComponent(SafeZone.class);
         hitText = currentScene.getComponent(HitText.class);
         dialog = currentScene.getComponent(Dialog.class);
+        score = currentScene.getComponent(Score.class);
     }
 
     @Override
@@ -62,6 +66,11 @@ public class BossController extends Controller {
                 flyingTarget.reset();
             }
         }
+        if (state == 4) {
+            if (time > 4f) {
+                Game.instance.setScene(new VictoryScreen(score.getScore()));
+            }
+        }
     }
 
     public void dealDamage(float damage) {
@@ -76,17 +85,13 @@ public class BossController extends Controller {
             hitText.show("CRITICAL HIT");
         }
         if (health > 0f) return;
-
-        health = 0f;
-        bossCharacter.setState(BossCharacter.BossState.DEAD);
-        safeZone.isPaused = true;
-        safeZone.reset();
+        setState(4);
     }
 
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
         if (state == 1 && input.isKeyPressed(Input.Keys.SPACE)) {
-            state = 2;
+            setState(2);
         }
     }
 

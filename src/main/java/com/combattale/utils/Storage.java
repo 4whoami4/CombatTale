@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.Map;
 
 public class Storage {
     private static final String FILE_NAME = "storage.json";
@@ -18,6 +20,14 @@ public class Storage {
 
     public static void setInt(String key, int value) {
         data.put(key, value);
+    }
+
+    public static void setString(String key, String value) {
+        data.put(key, value);
+    }
+
+    public static <K, V> void setMap(String key, Map<K, V> values) {
+        data.put(key, values);
     }
 
     public static void setDouble(String key, double value) {
@@ -34,6 +44,14 @@ public class Storage {
 
     public static String getString(String key, String defaultValue) {
         return data.optString(key, defaultValue);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <K, V> Map<K, V> getMap(String key) {
+        Object obj = data.opt(key);
+        if (obj instanceof Map)
+            return (Map<K, V>) obj;
+        return Collections.emptyMap();
     }
 
     public static double getDouble(String key, double defaultValue) {
