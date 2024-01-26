@@ -14,7 +14,7 @@ import com.combattale.utils.GuiPosition;
 public class Health extends GuiComponent {
     private final GlyphLayout layout = new GlyphLayout();
     private final BitmapFont font = Fonts.BODY_FONT;
-    private int health = 200;
+    private int health = 300;
 
     @Override
     public void create() {
@@ -29,7 +29,7 @@ public class Health extends GuiComponent {
         shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1);
         shapeRenderer.rect(pos.x + 64, pos.y + 14, 128, 21);
         shapeRenderer.setColor(1, 0, 0, 1);
-        shapeRenderer.rect(pos.x + 64, pos.y + 14, 128 * health / 200f, 21);
+        shapeRenderer.rect(pos.x + 64, pos.y + 14, 128 * health / 300f, 21);
         shapeRenderer.end();
 
         spriteBatch.begin();
@@ -49,7 +49,7 @@ public class Health extends GuiComponent {
 
     public void increase(int amount) {
         health += amount;
-        if (health > 200) health = 200;
+        if (health > 300) health = 300;
         layout.setText(font, String.valueOf(health));
     }
 }
