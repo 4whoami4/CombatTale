@@ -45,6 +45,16 @@ public class PlayerController extends Controller {
         }
     }
 
+    public void hide() {
+        canMove = false;
+        playerHeart.hide();
+    }
+
+    public void show() {
+        canMove = true;
+        playerHeart.show();
+    }
+
     @Override
     public void keyboardEvent(Input input, float deltaTime) {
         if (position == null) return;

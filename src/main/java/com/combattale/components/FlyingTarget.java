@@ -70,7 +70,7 @@ public class FlyingTarget extends Component {
         return switch (Game.instance.difficulty) {
             case Difficulty.EASY -> 0.5f;
             case Difficulty.NORMAL -> 0.7f;
-            case Difficulty.HARD -> 1f;
+            case Difficulty.EXTREME -> 1f;
         };
     }
 }

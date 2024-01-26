@@ -15,12 +15,12 @@ public class DifficultySelector extends GuiComponent {
     private final ArrayList<Button> buttons = new ArrayList<>() {{
         add(createButton("Easy", -1, Difficulty.EASY));
         add(createButton("Normal", 0, Difficulty.NORMAL));
-        add(createButton("Hard", 1, Difficulty.HARD));
+        add(createButton("EXTREME", 1, Difficulty.EXTREME));
     }};
     private final ArrayList<Difficulty> difficulties = new ArrayList<>() {{
         add(Difficulty.EASY);
         add(Difficulty.NORMAL);
-        add(Difficulty.HARD);
+        add(Difficulty.EXTREME);
     }};
 
     @Override
@@ -60,7 +60,7 @@ public class DifficultySelector extends GuiComponent {
         Storage.setInt("difficulty", switch (difficulty) {
             case EASY -> 0;
             case NORMAL -> 1;
-            case HARD -> 2;
+            case EXTREME -> 2;
         });
         Game.instance.difficulty = difficulty;
     }

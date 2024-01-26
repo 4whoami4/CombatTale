@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.combattale.Game;
 import com.combattale.components.BossCharacter;
 import com.combattale.components.FlyingTarget;
+import com.combattale.components.MiniGameBorder;
 import com.combattale.components.SafeZone;
 import com.combattale.components.ui.Dialog;
 import com.combattale.components.ui.HitText;
@@ -17,11 +18,12 @@ public class BossController extends Controller {
     private PlayerController playerController;
     private BossCharacter bossCharacter;
     private FlyingTarget flyingTarget;
+    private MiniGameBorder border;
     private SafeZone safeZone;
     private HitText hitText;
     private Dialog dialog;
     private Score score;
-    private double time = 0;
+    public double time = 0;
     private float health = 100;
     private int state = 0;
 
@@ -31,6 +33,7 @@ public class BossController extends Controller {
         playerController = currentScene.getComponent(PlayerController.class);
         bossCharacter = currentScene.getComponent(BossCharacter.class);
         flyingTarget = currentScene.getComponent(FlyingTarget.class);
+        border = currentScene.getComponent(MiniGameBorder.class);
         safeZone = currentScene.getComponent(SafeZone.class);
         hitText = currentScene.getComponent(HitText.class);
         dialog = currentScene.getComponent(Dialog.class);
@@ -49,20 +52,25 @@ public class BossController extends Controller {
                             "trapped in this dark reality forever. Will you reclaim your " +
                             "innocence and return to the world you once knew, or will your " +
                             "heart be forever bound to this realm of shadows?",
-                    this::nextState
+                    () -> setState(2)
             );
-            nextState();
+            setState(1);
         }
         if (state == 2) {
             dialog.hide();
             safeZone.isPaused = false;
             playerController.canMove = true;
             bossCharacter.setState(BossCharacter.BossState.FIGHTING);
-            nextState();
+            setState(3);
         }
         if (state == 3) {
-            if (time > 5f) {
+
+
+            if (time > 7.2f && !flyingTarget.isVisible) {
                 time = 0;
+                //hide playersheart
+                playerController.hide();
+                border.isBoardVisible = true;
                 flyingTarget.reset();
             }
         }
@@ -85,6 +93,12 @@ public class BossController extends Controller {
             hitText.show("CRITICAL HIT");
         }
         if (health > 0f) return;
+
+        health = 0f;
+        bossCharacter.setState(BossCharacter.BossState.DEAD);
+        safeZone.isPaused = true;
+        safeZone.reset();
+
         setState(4);
     }
 
@@ -98,9 +112,6 @@ public class BossController extends Controller {
     private void setState(int state) {
         this.time = 0;
         this.state = state;
-    }
-
-    private void nextState() {
-        setState(state + 1);
+        System.out.println("State: " + state);
     }
 }

@@ -9,6 +9,7 @@ import com.combattale.utils.Component;
 public class PlayerHeart extends Component {
     private static final float SCALE = 0.2f;
 
+    private boolean isVisible = true;
     private Texture texture;
     private Vector2 position;
 
@@ -19,7 +20,7 @@ public class PlayerHeart extends Component {
 
     @Override
     public void render(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        if (position == null) return;
+        if (position == null || !isVisible) return;
         spriteBatch.begin();
         spriteBatch.draw(
                 texture,
@@ -29,6 +30,14 @@ public class PlayerHeart extends Component {
                 texture.getHeight() * SCALE
         );
         spriteBatch.end();
+    }
+
+    public void hide() {
+        isVisible = false;
+    }
+
+    public void show() {
+        isVisible = true;
     }
 
     public void updatePosition(float x, float y) {

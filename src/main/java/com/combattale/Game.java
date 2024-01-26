@@ -35,7 +35,7 @@ public class Game extends ApplicationAdapter {
         masterVolume = (float) Storage.getDouble("volume", 1);
         difficulty = switch (Storage.getInt("difficulty", 1)) {
             case 0 -> Difficulty.EASY;
-            case 2 -> Difficulty.HARD;
+            case 2 -> Difficulty.EXTREME;
             default -> Difficulty.NORMAL;
         };
 

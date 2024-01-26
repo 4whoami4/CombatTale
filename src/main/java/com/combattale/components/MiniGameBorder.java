@@ -15,6 +15,7 @@ public class MiniGameBorder extends Component {
 
     private Vector2 position;
     private Texture texture;
+    public boolean isBoardVisible = false;
 
     @Override
     public void create() {
@@ -42,6 +43,8 @@ public class MiniGameBorder extends Component {
                 HEIGHT - borderThickness * 2
         );
         shapeRenderer.end();
+
+        if (!isBoardVisible) return;
 
         spriteBatch.begin();
         spriteBatch.draw(
