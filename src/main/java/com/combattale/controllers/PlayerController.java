@@ -37,7 +37,7 @@ public class PlayerController extends Controller {
     @Override
     public void update(float deltaTime) {
         if (!safeZone.isInZone(position) && canMove) {
-            health.decrease(1);
+            health.decrease(2);
         }
         if (canMove) {
             time += deltaTime;
